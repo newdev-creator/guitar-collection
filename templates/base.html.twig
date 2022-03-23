@@ -1,19 +1,45 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
         {% block body %}{% endblock %}
     </body>
-</html>
+
+  <footer>
+    <div class="container">
+      <div class="row mb-2">
+        <div class="col-md-4">
+          <h3>Voir les collections</h3>
+          <ul class="nav-links-footer">
+            <li><a class="paragraphe slide" href="">Catégories</a></li>
+            <li><a class="paragraphe slide" href="">Marques</a></li>
+            <li><a class="paragraphe slide" href="">Nouveautés</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Nous contacter</h3>
+          <ul class="nav-links-footer">
+            <li><a class="paragraphe slide" href="">FAQ consernant nos services</a></li>
+            <li><a class="paragraphe slide" href="">Espace utilisateur</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Entreprise</h3>
+          <ul class="nav-links-footer">
+            <li><a class="paragraphe slide" href="">À propos de Guitar Collection</a></li>
+            <li><a class="paragraphe slide" href="">Emplois</a></li>
+            <li><a class="paragraphe slide" href="">Press</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid color">
+      <div class="row">
+        <div class="col-md-12 d-flex justify-content-between">
+          <p class="copyright">Copyright &copy; Guitar Collection</p>
+          <p class="copyright">Powered by Newdevcreator</p>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
