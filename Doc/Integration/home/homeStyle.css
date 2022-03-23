@@ -1,23 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800;900&display=swap');
+
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  min-height: 8vh;
-  background-color: #5d4954;
-  font-family: 'Poppins', sans-serif;
+/* ======================================== */
+
+/* NAVBAR */
+
+/* ======================================== */
+.header {
+  background-color: #020302;
 }
 
-.logo {
-  color: rgb(226, 226, 226);
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-size: 20px;
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 8vh;
+  font-family: 'Poppins', sans-serif;
 }
 
 .nav-links {
@@ -31,22 +36,22 @@ nav {
 }
 
 .nav-links a {
-  color: rgb(226, 226, 226);
+  color: #f0a500;
   text-decoration: none;
   letter-spacing: 3px;
   font-weight: bold;
   font-size: 14px;
 }
 
-.burger {
+.nav-burger  {
   display: none;
   cursor: pointer;
 }
 
-.burger div {
+.nav-burger  div {
   width: 25px;
   height: 3px;
-  background-color: rgb(226, 226, 226);
+  background-color: #f0a500;
   margin: 5px;
   transition: all 0.3s ease;
 }
@@ -66,7 +71,7 @@ nav {
       right: 0px;
       height: 92vh;
       top: 8vh;
-      background-color: #5d4954;
+      background-color: #f0a500;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -79,7 +84,11 @@ nav {
     opacity: 0;
   }
 
-  .burger {
+  .nav-links a {
+    color: #020302;
+  }
+
+  .nav-burger {
     display: block;
   }
 }
@@ -109,4 +118,64 @@ nav {
 
 .toggle .line3 {
   transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+
+/* ======================================== */
+
+/* HOMEPAGE */
+
+/* ======================================== */
+main {
+  background-color: #020302;
+  margin-bottom: 1rem;
+}
+.content {
+  height: 100vh;
+  width: 100%;
+  background-image: url(/Doc/Integration/assets/Image/background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #464646;
+  background-position: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  box-sizing: border-box;
+  position: relative;
+  padding: 1rem;
+  border-bottom: #f0a500 2px solid;
+  margin-bottom: 1rem;
+
+  text-align: end;
+  color: #f0a500;
+}
+
+.home-title {
+  font-weight: 600;
+  font-size: 6.5rem;
+}
+
+.home-sub-title {
+  font-weight: 600;
+  font-size: 3.8rem;
+  margin-bottom: 3rem;
+}
+
+.home-paragraphe {
+  font-size: 1.5rem;
+  font-weight: 300 !important;
+  margin-bottom: 4rem;
+}
+
+.home-btn {
+  background-color: #f0a500;
+  color: #020302;
+  font-weight: 900;
+  font-size: 3.5rem;
+  border-radius: 30px;
+}
+
+.home-btn:hover {
+  background-color: #f0ec00;
 }
