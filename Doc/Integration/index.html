@@ -9,40 +9,122 @@
   <title>Guitar Collection</title>
 </head>
 <body>
-  <main>
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <div class="container-fluid d-flex justify-content-end me-5">
-            <ul class="navbar-nav">
-              <li class="mx-auto nav-item">
-                <a class="nav-link text-warning paragraphe active" aria-current="page" href="#">Accueil</a>
-              </li>
-              <li class="mx-auto nav-item">
-                <a class="nav-link text-warning paragraphe" href="#">Collection</a>
-              </li>
-              <li class="mx-auto nav-item">
-                <a class="nav-link text-warning paragraphe" href="#">Contact</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+  <header>
+    <nav>
+      <ul class="nav-links">
+        <li>
+          <a class="paragraphe slide" href="">Accueil</a>
+        </li>
+        <li>
+          <a class="paragraphe slide" href="">A propos</a>
+        </li>
+        <li>
+          <a class="paragraphe slide" href="">Collection</a>
+        </li>
+        <li>
+          <a class="paragraphe slide" href="">Contact</a>
+        </li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
       </div>
     </nav>
 
     <div class="content">
-      
         <h1 class="title">Guitar Collection</h1>
         <h2 class="sub-title">Recensez votre collection</h2>
         <p class="paragraphe">Pour les amoureux et les passionnés de <br> guitares, photographiez vos instruments, <br> enregistrez les et partagez les</p>
-        <button type="button" class="btn">S'enregistrer</button>
-      
+        <button type="button" class="btn-home">Se connecter</button>
+    </div>
+  </header>
+
+
+  <main>
+      <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card">
+                <img src="https://cdn.pixabay.com/photo/2017/11/07/00/18/guitar-2925274__340.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Guitar</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-warning">Consulter</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <img src="https://cdn.pixabay.com/photo/2019/10/04/05/42/workshop-4524838__340.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Guitar</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-warning">Consulter</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <img src="https://cdn.pixabay.com/photo/2016/11/19/21/05/bass-guitar-1841186__340.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Guitar</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-warning">Consulter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  </main>
+
+
+  <footer>
+    <div class="container">
+      <div class="row mb-2">
+        <div class="col-md-4">
+          <h3>Voir les collections</h3>
+          <ul class="nav-links-footer">
+            <li><a class="paragraphe slide" href="">Catégories</a></li>
+            <li><a class="paragraphe slide" href="">Marques</a></li>
+            <li><a class="paragraphe slide" href="">Nouveautés</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Nous contacter</h3>
+          <ul class="nav-links-footer">
+            <li><a class="paragraphe slide" href="">FAQ consernant nos services</a></li>
+            <li><a class="paragraphe slide" href="">Espace utilisateur</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Entreprise</h3>
+          <ul class="nav-links-footer">
+            <li><a class="paragraphe slide" href="">À propos de Guitar Collection</a></li>
+            <li><a class="paragraphe slide" href="">Emplois</a></li>
+            <li><a class="paragraphe slide" href="">Press</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-  </main>
+    <div class="container-fluid color">
+      <div class="row">
+        <div class="col-md-12 d-flex justify-content-between">
+          <p class="copyright">Copyright &copy; Guitar Collection</p>
+          <p class="copyright">Powered by Newdevcreator</p>
+
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+
+  <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
