@@ -34,6 +34,7 @@ nav {
   display: flex;
   justify-content: space-around;
   width: 50%;
+  z-index: 999;
 }
 
 .nav-links li {
@@ -46,6 +47,20 @@ nav {
   letter-spacing: 3px;
   font-weight: bold;
   font-size: 14px;
+}
+
+.nav-btn {
+  display: block;
+  background-color: #020302;;
+  color: #f0a500;
+  font-weight: 900;
+  font-size: 1rem;
+  border-radius: 30px;
+  width: 8rem;
+}
+
+.nav-btn:hover {
+  background-color: #f0ec00;
 }
 
 .nav-burger  {
@@ -61,9 +76,9 @@ nav {
   transition: all 0.3s ease;
 }
 
-@media screen and (max-width:1.24px) {
+@media screen and (max-width:1024px) {
   .nav-links {
-    width: 60%;
+    width: 100%;
   }
 }
 
@@ -95,6 +110,7 @@ nav {
 
   .nav-burger {
     display: block;
+    margin-right: 1rem;
   }
 }
 
@@ -177,20 +193,24 @@ section {
   margin-bottom: 4rem;
 }
 
-.home-btn {
-  background-color: #f0a500;
-  color: #020302;
-  font-weight: 900;
-  font-size: 3.5rem;
-  border-radius: 30px;
-}
-
-.home-btn:hover {
-  background-color: #f0ec00;
-}
-
 .card {
   margin-bottom: 1rem;
+}
+
+@media screen and (max-width:768px) {
+  .content {
+    text-align: center;
+  }
+  .home-title {
+    font-size: 4.5rem;
+    margin-bottom: 2rem;
+  }
+  .home-sub-title {
+    font-size: 2.8rem;
+  }
+  .home-btn{
+    display: none;
+  }
 }
 
 /* ======================================== */
@@ -234,11 +254,11 @@ footer {
 /* ======================================== */
 
 
-.nav-links li {
+.nav-slide-line {
   position: relative;
 }
 
-.nav-links li::before {
+.nav-slide-line::before {
   content: "";
   position: absolute;
   background: #f0a500;
@@ -250,7 +270,7 @@ footer {
   transition: transform 0.4s;
 }
 
-.nav-links li:hover::before {
+.nav-slide-line:hover::before {
   transform-origin: 0 0;
   transform: scaleX(1);
 }
