@@ -1,0 +1,82 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<style>
+  #mld .relation { font-variant: small-caps; font-weight: bold }
+  #mld .primary { text-decoration: underline }
+  #mld .foreign { font-style: oblique }
+  #mld .normal { }
+</style>
+</head>
+<body>
+<div id='mld'>
+<div>
+  <span class='relation'>User</span> (
+    <span class='primary'>firstName</span>,
+    <span class='normal'>lastName</span>,
+    <span class='normal'>email</span>,
+    <span class='normal'>createdAt</span>,
+    <span class='normal'>updatedAt</span>,
+    <span class='foreign'>name</span>
+  )
+</div>
+<div>
+  <span class='relation'>Aesthetic</span> (
+    <span class='primary'>wear</span>,
+    <span class='normal'>finition</span>,
+    <span class='normal'>pickups</span>,
+    <span class='normal'>model</span>,
+    <span class='normal'>neckMaterial</span>,
+    <span class='normal'>bodyMaterial</span>,
+    <span class='normal'>bodyForm</span>,
+    <span class='foreign'>name</span>
+  )
+</div>
+<div>
+  <span class='relation'>Guitar</span> (
+    <span class='primary'>name</span>,
+    <span class='normal'>year</span>,
+    <span class='normal'>acquisitioDate</span>,
+    <span class='normal'>dominationHand</span>,
+    <span class='normal'>nbString</span>,
+    <span class='normal'>fixation</span>,
+    <span class='normal'>createdAt</span>,
+    <span class='normal'>updatedAt</span>
+  )
+</div>
+<div>
+  <span class='relation'>Post</span> (
+    <span class='primary'>title</span>,
+    <span class='normal'>synonpsis</span>,
+    <span class='normal'>createdAt</span>,
+    <span class='normal'>updatedAt</span>
+  )
+</div>
+<div>
+  <span class='relation'>Brand</span> (
+    <span class='primary'>name</span>,
+    <span class='foreign'>name.1</span>
+  )
+</div>
+<div>
+  <span class='relation'>to</span> (
+    <span class='foreign primary'>name</span>,
+    <span class='foreign primary'>name.1</span>
+  )
+</div>
+<!--
+<div>
+  <span class='relation'>Category</span> (
+    <span class='primary'>name</span>
+  )
+</div>
+-->
+<div>
+  <span class='relation'>link</span> (
+    <span class='foreign primary'>name</span>,
+    <span class='foreign primary'>title</span>
+  )
+</div>
+</div>
+</body>
+</html>
