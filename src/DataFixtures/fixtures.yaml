@@ -1,0 +1,11 @@
+App\Entity\Guitar:
+    guitar{1..10}:
+        name: '<word()>' 
+        year: '<date_create()>'
+        acquisitionAt: '<date_create()>'
+        dominationHang: '50%? <numberBetween(1, 2)>'
+        nbString: '70%? <numberBetween(21, 24)>'
+        fixation: '50%? <numberBetween(1, 2)>'
+        createdAt: '<date_create()>'
+        updatedAt: '<date_create()>'
+

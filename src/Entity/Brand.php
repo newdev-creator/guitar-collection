@@ -30,6 +30,11 @@ class Brand
      */
     private $guitar;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -87,6 +92,18 @@ class Brand
         if ($this->posts->removeElement($post)) {
             $post->removeBrand($this);
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

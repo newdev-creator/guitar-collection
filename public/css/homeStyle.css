@@ -157,7 +157,7 @@ section {
 }
 
 .content {
-  height: 100vh;
+  height: 87vh;
   width: 100%;
   background-image: url(/Doc/Integration/assets/Image/background.png);
   background-repeat: no-repeat;
@@ -177,6 +177,7 @@ section {
 }
 
 .home-title {
+  margin-top: 3rem;
   font-weight: 600;
   font-size: 6.5rem;
 }

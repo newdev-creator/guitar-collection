@@ -2,6 +2,61 @@
 
 {% block title %}Hello HomeController!{% endblock %}
 
+
 {% block body %}
+{{ dump(home_page) }}
+<main>
+  <div class="content">
+    <h1 class="home-title">Guitare Collection</h1>
+    <h2 class="home-sub-title">Recensez votre collection</h2>
+    <p class="home-paragraphe">Pour les amoureux et les passionnés de guitares, photographiez <br> vos instruments,
+      enregistrez les et partagez les</p>
+  </div>
+
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://cdn.pixabay.com/photo/2017/11/07/00/18/guitar-2925274__340.jpg" class="card-img-top"
+              alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Guitar</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <a href="#" class="btn btn-warning">Consulter</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://cdn.pixabay.com/photo/2019/10/04/05/42/workshop-4524838__340.jpg" class="card-img-top"
+              alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Guitar</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <a href="#" class="btn btn-warning">Consulter</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="https://cdn.pixabay.com/photo/2016/11/19/21/05/bass-guitar-1841186__340.jpg" class="card-img-top"
+              alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Guitar</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <a href="#" class="btn btn-warning">Consulter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 {% endblock %}
