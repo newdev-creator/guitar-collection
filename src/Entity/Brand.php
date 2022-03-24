@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BrandRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,6 +29,16 @@ class Brand
      * @ORM\JoinColumn(nullable=false)
      */
     private $guitar;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Post::class, mappedBy="brand")
+     */
+    private $posts;
+
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -53,6 +65,33 @@ class Brand
     public function setGuitar(?Guitar $guitar): self
     {
         $this->guitar = $guitar;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Post>
+     */
+    public function getPosts(): Collection
+    {
+        return $this->posts;
+    }
+
+    public function addPost(Post $post): self
+    {
+        if (!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+            $post->addBrand($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(Post $post): self
+    {
+        if ($this->posts->removeElement($post)) {
+            $post->removeBrand($this);
+        }
 
         return $this;
     }

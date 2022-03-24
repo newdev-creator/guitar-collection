@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,16 @@ class Post
      * @ORM\Column(type="datetime_immutable")
      */
     private $updatedAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Brand::class, inversedBy="posts")
+     */
+    private $brand;
+
+    public function __construct()
+    {
+        $this->brand = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +98,30 @@ class Post
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Brand>
+     */
+    public function getBrand(): Collection
+    {
+        return $this->brand;
+    }
+
+    public function addBrand(Brand $brand): self
+    {
+        if (!$this->brand->contains($brand)) {
+            $this->brand[] = $brand;
+        }
+
+        return $this;
+    }
+
+    public function removeBrand(Brand $brand): self
+    {
+        $this->brand->removeElement($brand);
 
         return $this;
     }
