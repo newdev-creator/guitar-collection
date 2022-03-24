@@ -19,16 +19,21 @@
 
 nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   min-height: 8vh;
   font-family: 'Poppins', sans-serif;
 }
 
+.logo {
+  padding: 1rem;
+  margin-left: 1rem;
+}
+
 .nav-links {
   display: flex;
   justify-content: space-around;
-  width: 30%;
+  width: 50%;
 }
 
 .nav-links li {
@@ -129,7 +134,6 @@ nav {
 /* ======================================== */
 main {
   background-color: #020302;
-  margin-bottom: 1rem;
 }
 
 section {
@@ -194,4 +198,63 @@ section {
 /* FOOTER */
 
 /* ======================================== */
+footer {
+  background-color: #020302;
+  
+  padding-top: 1rem;
+  color: #f0a500;
+}
 
+.nav-links-footer {
+
+}
+
+.nav-links-footer li {
+  list-style: none;
+}
+
+.nav-links-footer a {
+  color: #f0a500;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.container-fluid {
+  color: #020302;
+  background-color: #f0a500;
+}
+
+
+/* ======================================== */
+
+/* HOVER */
+
+/* ======================================== */
+
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links li::before {
+  content: "";
+  position: absolute;
+  background: #f0a500;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  transform-origin: 100% 0;
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+
+.nav-links li:hover::before {
+  transform-origin: 0 0;
+  transform: scaleX(1);
+}
+
+.nav-links-footer a:hover {
+  color: white;
+}
