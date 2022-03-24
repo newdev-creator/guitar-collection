@@ -40,13 +40,14 @@ class Post
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Brand::class, inversedBy="posts")
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="posts")
      */
-    private $brand;
+    private $category;
 
     public function __construct()
     {
         $this->brand = new ArrayCollection();
+        $this->category = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -122,6 +123,30 @@ class Post
     public function removeBrand(Brand $brand): self
     {
         $this->brand->removeElement($brand);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->category->contains($category)) {
+            $this->category[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->category->removeElement($category);
 
         return $this;
     }

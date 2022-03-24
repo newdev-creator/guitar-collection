@@ -30,11 +30,6 @@ class Brand
      */
     private $guitar;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Post::class, mappedBy="brand")
-     */
-    private $posts;
-
     public function __construct()
     {
         $this->posts = new ArrayCollection();

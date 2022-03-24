@@ -29,9 +29,15 @@ class Category
      */
     private $guitars;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Post::class, mappedBy="category")
+     */
+    private $posts;
+
     public function __construct()
     {
         $this->guitars = new ArrayCollection();
+        $this->posts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -73,6 +79,33 @@ class Category
     {
         if ($this->guitars->removeElement($guitar)) {
             $guitar->removeCategory($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Post>
+     */
+    public function getPosts(): Collection
+    {
+        return $this->posts;
+    }
+
+    public function addPost(Post $post): self
+    {
+        if (!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+            $post->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(Post $post): self
+    {
+        if ($this->posts->removeElement($post)) {
+            $post->removeCategory($this);
         }
 
         return $this;
