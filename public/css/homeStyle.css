@@ -152,10 +152,6 @@ main {
   background-color: #020302;
 }
 
-section {
-  border-bottom: #f0a500 2px solid;
-}
-
 .content {
   height: 87vh;
   width: 100%;
@@ -221,13 +217,9 @@ section {
 /* ======================================== */
 footer {
   background-color: #020302;
-  
+  border-top: #f0a500 2px solid;
   padding-top: 1rem;
   color: #f0a500;
-}
-
-.nav-links-footer {
-
 }
 
 .nav-links-footer li {
