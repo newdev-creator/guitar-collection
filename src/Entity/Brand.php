@@ -25,19 +25,18 @@ class Brand
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Guitar::class, inversedBy="brand")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $guitar;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Guitar::class, mappedBy="brand")
+     */
+    private $guitars;
+
     public function __construct()
     {
-        $this->posts = new ArrayCollection();
+        $this->guitars = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -57,45 +56,6 @@ class Brand
         return $this;
     }
 
-    public function getGuitar(): ?Guitar
-    {
-        return $this->guitar;
-    }
-
-    public function setGuitar(?Guitar $guitar): self
-    {
-        $this->guitar = $guitar;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Post>
-     */
-    public function getPosts(): Collection
-    {
-        return $this->posts;
-    }
-
-    public function addPost(Post $post): self
-    {
-        if (!$this->posts->contains($post)) {
-            $this->posts[] = $post;
-            $post->addBrand($this);
-        }
-
-        return $this;
-    }
-
-    public function removePost(Post $post): self
-    {
-        if ($this->posts->removeElement($post)) {
-            $post->removeBrand($this);
-        }
-
-        return $this;
-    }
-
     public function getImage(): ?string
     {
         return $this->image;
@@ -104,6 +64,36 @@ class Brand
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Guitar>
+     */
+    public function getGuitars(): Collection
+    {
+        return $this->guitars;
+    }
+
+    public function addGuitar(Guitar $guitar): self
+    {
+        if (!$this->guitars->contains($guitar)) {
+            $this->guitars[] = $guitar;
+            $guitar->setBrand($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGuitar(Guitar $guitar): self
+    {
+        if ($this->guitars->removeElement($guitar)) {
+            // set the owning side to null (unless already changed)
+            if ($guitar->getBrand() === $this) {
+                $guitar->setBrand(null);
+            }
+        }
 
         return $this;
     }

@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ORM\Table(name="`user`")
  */
 class User
 {
@@ -46,14 +45,14 @@ class User
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Guitar::class, mappedBy="user")
-     */
-    private $guitars;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Guitar::class, mappedBy="user")
+     */
+    private $guitars;
 
     public function __construct()
     {
@@ -125,6 +124,18 @@ class User
         return $this;
     }
 
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
     /**
      * @return Collection<int, Guitar>
      */
@@ -151,18 +162,6 @@ class User
                 $guitar->setUser(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
 
         return $this;
     }

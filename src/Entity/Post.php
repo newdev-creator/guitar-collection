@@ -25,9 +25,19 @@ class Post
     private $title;
 
     /**
-     * @ORM\Column(type="text", length=500)
+     * @ORM\Column(type="string", length=50)
+     */
+    private $presentation;
+
+    /**
+     * @ORM\Column(type="text")
      */
     private $synopsis;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
 
     /**
      * @ORM\Column(type="datetime_immutable")
@@ -40,24 +50,13 @@ class Post
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="posts")
+     * @ORM\ManyToMany(targetEntity=Category::class, mappedBy="post")
      */
-    private $category;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $image;
-
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $Presentation;
+    private $categories;
 
     public function __construct()
     {
-        $this->brand = new ArrayCollection();
-        $this->category = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,6 +76,18 @@ class Post
         return $this;
     }
 
+    public function getPresentation(): ?string
+    {
+        return $this->presentation;
+    }
+
+    public function setPresentation(string $presentation): self
+    {
+        $this->presentation = $presentation;
+
+        return $this;
+    }
+
     public function getSynopsis(): ?string
     {
         return $this->synopsis;
@@ -85,6 +96,18 @@ class Post
     public function setSynopsis(string $synopsis): self
     {
         $this->synopsis = $synopsis;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
@@ -114,41 +137,18 @@ class Post
     }
 
     /**
-     * @return Collection<int, Brand>
-     */
-    public function getBrand(): Collection
-    {
-        return $this->brand;
-    }
-
-    public function addBrand(Brand $brand): self
-    {
-        if (!$this->brand->contains($brand)) {
-            $this->brand[] = $brand;
-        }
-
-        return $this;
-    }
-
-    public function removeBrand(Brand $brand): self
-    {
-        $this->brand->removeElement($brand);
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Category>
      */
-    public function getCategory(): Collection
+    public function getCategories(): Collection
     {
-        return $this->category;
+        return $this->categories;
     }
 
     public function addCategory(Category $category): self
     {
-        if (!$this->category->contains($category)) {
-            $this->category[] = $category;
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->addPost($this);
         }
 
         return $this;
@@ -156,31 +156,9 @@ class Post
 
     public function removeCategory(Category $category): self
     {
-        $this->category->removeElement($category);
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    public function getPresentation(): ?string
-    {
-        return $this->Presentation;
-    }
-
-    public function setPresentation(string $Presentation): self
-    {
-        $this->Presentation = $Presentation;
+        if ($this->categories->removeElement($category)) {
+            $category->removePost($this);
+        }
 
         return $this;
     }

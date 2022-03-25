@@ -52,17 +52,17 @@ class Aesthetic
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $bodyForm;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Guitar::class, mappedBy="aesthetic")
-     */
-    private $guitars;
+    private $form;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Guitar::class, mappedBy="Aesthetic")
+     */
+    private $guitars;
 
     public function __construct()
     {
@@ -146,14 +146,26 @@ class Aesthetic
         return $this;
     }
 
-    public function getBodyForm(): ?string
+    public function getForm(): ?string
     {
-        return $this->bodyForm;
+        return $this->form;
     }
 
-    public function setBodyForm(string $bodyForm): self
+    public function setForm(string $form): self
     {
-        $this->bodyForm = $bodyForm;
+        $this->form = $form;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
@@ -184,18 +196,6 @@ class Aesthetic
                 $guitar->setAesthetic(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
 
         return $this;
     }

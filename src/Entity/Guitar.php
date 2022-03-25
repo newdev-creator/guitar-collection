@@ -37,7 +37,7 @@ class Guitar
     /**
      * @ORM\Column(type="boolean")
      */
-    private $dominationHang;
+    private $dominationHand;
 
     /**
      * @ORM\Column(type="integer")
@@ -60,20 +60,9 @@ class Guitar
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Aesthetic::class, inversedBy="guitars")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $aesthetic;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="guitars")
-     */
-    private $category;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Brand::class, mappedBy="guitar")
-     */
-    private $brand;
+    private $image;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="guitars")
@@ -82,14 +71,25 @@ class Guitar
     private $user;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity=Brand::class, inversedBy="guitars")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $image;
+    private $brand;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="guitars")
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Aesthetic::class, inversedBy="guitars")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Aesthetic;
 
     public function __construct()
     {
         $this->category = new ArrayCollection();
-        $this->brand = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -133,14 +133,14 @@ class Guitar
         return $this;
     }
 
-    public function getDominationHang(): ?bool
+    public function getDominationHand(): ?bool
     {
-        return $this->dominationHang;
+        return $this->dominationHand;
     }
 
-    public function setDominationHang(bool $dominationHang): self
+    public function setDominationHand(bool $dominationHand): self
     {
-        $this->dominationHang = $dominationHang;
+        $this->dominationHand = $dominationHand;
 
         return $this;
     }
@@ -193,14 +193,38 @@ class Guitar
         return $this;
     }
 
-    public function getAesthetic(): ?Aesthetic
+    public function getImage(): ?string
     {
-        return $this->aesthetic;
+        return $this->image;
     }
 
-    public function setAesthetic(?Aesthetic $aesthetic): self
+    public function setImage(?string $image): self
     {
-        $this->aesthetic = $aesthetic;
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getBrand(): ?Brand
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?Brand $brand): self
+    {
+        $this->brand = $brand;
 
         return $this;
     }
@@ -229,56 +253,14 @@ class Guitar
         return $this;
     }
 
-    /**
-     * @return Collection<int, Brand>
-     */
-    public function getBrand(): Collection
+    public function getAesthetic(): ?Aesthetic
     {
-        return $this->brand;
+        return $this->Aesthetic;
     }
 
-    public function addBrand(Brand $brand): self
+    public function setAesthetic(?Aesthetic $Aesthetic): self
     {
-        if (!$this->brand->contains($brand)) {
-            $this->brand[] = $brand;
-            $brand->setGuitar($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBrand(Brand $brand): self
-    {
-        if ($this->brand->removeElement($brand)) {
-            // set the owning side to null (unless already changed)
-            if ($brand->getGuitar() === $this) {
-                $brand->setGuitar(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
+        $this->Aesthetic = $Aesthetic;
 
         return $this;
     }
