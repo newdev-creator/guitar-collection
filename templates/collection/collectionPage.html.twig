@@ -1,9 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CollectionController!{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-<pre>
-    {{ dump(collection_page) }}
-</pre>
+<main>
+    <h1 class="text-center collection-title">Collection</h1>
+
+    <div class="container">
+        <div class="row">
+            {% for guitar in collection_page %}
+            <div class="col-md-3">
+                <div class="card">
+                    <a href="{{ path("collection_show", {"id": guitar.id}) }}">
+                        <img class="collection-image" src="{{ guitar.image }}" alt="{{ guitar.name }}">
+                        <h2 class="text-center">{{ guitar.name }}</h2>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
 {% endblock %}

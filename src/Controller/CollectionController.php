@@ -24,4 +24,18 @@ class CollectionController extends AbstractController
             'collection_page' => $allGuitars,
         ]);
     }
+
+    /**
+     * @Route("/{id}", name="_show", methods={"GET"})
+     */
+    public function show(GuitarRepository $guitarRepository, $id): Response
+    {
+        // get guitar by id
+        $guitar = $guitarRepository->find($id);
+
+        // dd($guitar);
+        return $this->render('collection/CollectionShow.html.twig', [
+            'Collection_show' => $guitar,
+        ]);
+    }    
 }
