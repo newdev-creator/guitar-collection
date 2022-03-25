@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800;900&display=swap');
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ======================================== */
+
+/* NAVBAR */
+
+/* ======================================== */
+.header {
+  background-color: #020302;
+}
+
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 8vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+.logo {
+  padding: 1rem;
+  margin-left: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  z-index: 999;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  color: #f0a500;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.nav-btn {
+  display: block;
+  background-color: #020302;;
+  color: #f0a500;
+  font-weight: 900;
+  font-size: 1rem;
+  border-radius: 30px;
+  width: 8rem;
+}
+
+.nav-btn:hover {
+  background-color: #f0ec00;
+}
+
+.nav-burger  {
+  display: none;
+  cursor: pointer;
+}
+
+.nav-burger  div {
+  width: 25px;
+  height: 3px;
+  background-color: #f0a500;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width:1024px) {
+  .nav-links {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:768px) {
+  body{
+    overflow-x: hidden;
+  }
+  .nav-links {
+    position: absolute;
+      right: 0px;
+      height: 92vh;
+      top: 8vh;
+      background-color: #f0a500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+      transform: translate(100%);
+      transition: transform 0.5s ease-in;
+  }
+
+  .nav-links li {
+    opacity: 0;
+  }
+
+  .nav-links a {
+    color: #020302;
+  }
+
+  .nav-burger {
+    display: block;
+    margin-right: 1rem;
+  }
+}
+
+.nav-active {
+  transform: translate(0%);
+}
+
+@keyframes navLinkFade {
+  from{
+    opacity: 0;
+    transform: translate(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px);
+  }
+}
+
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+  opacity: 0;
+}
+
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+
+/* ======================================== */
+
+/* HOMEPAGE */
+
+/* ======================================== */
+main {
+  background-color: #020302;
+}
+
+section {
+  border-bottom: #f0a500 2px solid;
+}
+
+.content {
+  height: 87vh;
+  width: 100%;
+  background-image: url(../images/background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #464646;
+  background-position: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  box-sizing: border-box;
+  position: relative;
+  padding: 1rem;
+  border-bottom: #f0a500 2px solid;
+  margin-bottom: 1rem;
+
+  text-align: end;
+  color: #f0a500;
+}
+
+.home-title {
+  margin-top: 3rem;
+  font-weight: 600;
+  font-size: 6.5rem;
+}
+
+.home-sub-title {
+  font-weight: 600;
+  font-size: 3.8rem;
+  margin-bottom: 3rem;
+}
+
+.home-paragraphe {
+  font-size: 1.5rem;
+  font-weight: 300 !important;
+  margin-bottom: 4rem;
+}
+
+.card {
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width:768px) {
+  .content {
+    text-align: center;
+  }
+  .home-title {
+    font-size: 4.5rem;
+    margin-bottom: 2rem;
+  }
+  .home-sub-title {
+    font-size: 2.8rem;
+  }
+  .home-btn{
+    display: none;
+  }
+}
+
+/* ======================================== */
+
+/* FOOTER */
+
+/* ======================================== */
+footer {
+  background-color: #020302;
+  
+  padding-top: 1rem;
+  color: #f0a500;
+}
+
+.nav-links-footer {
+
+}
+
+.nav-links-footer li {
+  list-style: none;
+}
+
+.nav-links-footer a {
+  color: #f0a500;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.container-fluid {
+  color: #020302;
+  background-color: #f0a500;
+}
+
+
+/* ======================================== */
+
+/* HOVER */
+
+/* ======================================== */
+
+
+.nav-slide-line {
+  position: relative;
+}
+
+.nav-slide-line::before {
+  content: "";
+  position: absolute;
+  background: #f0a500;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  transform-origin: 100% 0;
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+
+.nav-slide-line:hover::before {
+  transform-origin: 0 0;
+  transform: scaleX(1);
+}
+
+.nav-links-footer a:hover {
+  color: white;
+}

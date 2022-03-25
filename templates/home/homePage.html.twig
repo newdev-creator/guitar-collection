@@ -1,20 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{# {{ dump(home_page) }} #}
+<main>
+    <div class="content">
+      <h1 class="home-title">Guitare Collection</h1>
+      <h2 class="home-sub-title">Recensez votre collection</h2>
+      <p class="home-paragraphe">Pour les amoureux et les passionnés de guitares, photographiez <br> vos instruments, enregistrez les et partagez les</p>
+    </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/GuitarCollection/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/GuitarCollection/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <section>
+      <div class="container">
+        <div class="row">
+        {% for post in home_page %}
+          <div class="col-md-4">
+            <div class="card">
+              <img src="{{ post.image }}" class="card-img-top" alt="{{ post.image }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.presentation }}</p>
+                <a href="#" class="btn btn-warning">Consulter</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+  </main>
+
 {% endblock %}

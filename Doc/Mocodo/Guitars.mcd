@@ -1,0 +1,14 @@
+User: firstName, lastName, email, createdAt, updatedAt
+possession, 1n Guitar, 11 User
+Aesthetic: wear, finition, pickups, model, neckMaterial, bodyMaterial, bodyForm
+:
+
+has_brand, 01 Brand, 1n Guitar
+Guitar: name, year, acquisitioDate, dominationHand, nbString, fixation, createdAt, updatedAt
+has_guitar, 1n Guitar, 11 Aesthetic
+Post: title, synonpsis, createdAt, updatedAt
+
+Brand: name
+to, 0n Guitar, 1n Category
+Category: name
+link, 1n Category, 1n Post
