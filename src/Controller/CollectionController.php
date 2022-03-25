@@ -37,7 +37,7 @@ class CollectionController extends AbstractController
 
         // dd($guitar);
         return $this->render('collection/collectionShow.html.twig', [
-            'Collection_show' => $guitar,
+            'collection_show' => $guitar,
             'aesthetic' => $aesthetic,
             'brand' => $brand,
         ]);
