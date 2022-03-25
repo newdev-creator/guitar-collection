@@ -8,12 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/", name="homePage")
+ * @Route("/", name="home")
  */
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="browse", methods={"GET"})
+     * @Route("/", name="_Page", methods={"GET"})
      */
     public function homePage(PostRepository $postRepository): Response
     {

@@ -49,6 +49,11 @@ class Post
      */
     private $image;
 
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $Presentation;
+
     public function __construct()
     {
         $this->brand = new ArrayCollection();
@@ -164,6 +169,18 @@ class Post
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getPresentation(): ?string
+    {
+        return $this->Presentation;
+    }
+
+    public function setPresentation(string $Presentation): self
+    {
+        $this->Presentation = $Presentation;
 
         return $this;
     }

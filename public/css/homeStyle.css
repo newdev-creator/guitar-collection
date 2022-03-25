@@ -159,7 +159,7 @@ section {
 .content {
   height: 87vh;
   width: 100%;
-  background-image: url(/public/images/background.png);
+  background-image: url(../images/background.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #464646;
