@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Aesthetic;
+use App\Entity\Brand;
+use App\Entity\Category;
+use App\Repository\BrandRepository;
 use App\Repository\GuitarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,14 +32,18 @@ class CollectionController extends AbstractController
     /**
      * @Route("/{id}", name="_show", methods={"GET"})
      */
-    public function show(GuitarRepository $guitarRepository, $id): Response
+    public function show(GuitarRepository $guitarRepository, BrandRepository $brandRepository, $id): Response
     {
         // get guitar by id
         $guitar = $guitarRepository->find($id);
+        $aesthetic = $guitar->getAesthetic();
+        $brand = $brandRepository->find($id);
 
         // dd($guitar);
         return $this->render('collection/CollectionShow.html.twig', [
             'Collection_show' => $guitar,
+            'aesthetic' => $aesthetic,
+            'brand' => $brand,
         ]);
     }    
 }
