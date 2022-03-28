@@ -5,20 +5,46 @@
 {% block body %}
 <main>
   <h1 class="text-center collection-title">{{ brand.name }} {{ aesthetic.model }}</h1>
-  <div class="container pb-5">
+  <div class="container pb-5 font-family">
     <div class="row">
+      <p>
+        <p><a class="link-dark" href="{{ path("home_Page") }}">Accueil</a>
+          >
+          <a class="link-dark" href="{{ path("collection_page") }}">Collection </a>
+          >
+          <a class="link-dark" href="">{{ brand.name }} </a>
+          >
+          {{ collection_show.name }}
+        </p>
+        <div class="col-md-6">
+          <img class="collection-image" src="{{ collection_show.image }}"
+            alt="{{ brand.name }} {{ collection_show.name }}">
+        </div>
 
-
-      <div class="col-md-6">
-        <img 
-          class="collection-image"
-          src="{{ collection_show.image }}"
-          alt="{{ brand.name }} {{ collection_show.name }}">
-      </div>
-
-      <div class="col-md-6">
-        <h2>{{ aesthetic.wear }}</h2>
-      </div>
+        <div class="col-md-6">
+          <h2>Caratéristiques</h2>
+          <p>Etat: {{ aesthetic.wear }}</p>
+          <p>Finition: {{ aesthetic.finition }}</p>
+          <p>Micros: {{ aesthetic.pickups }}</p>
+          <p>Manche: {{ aesthetic.neckMaterial }}</p>
+          <p>Gaucher/Droitier:
+            {% if collection_show.dominationHand == true %}
+            Droitier
+            {% else %}
+            Gaucher
+            {% endif %}
+          </p>
+          <p>Nombre de frettes: {{ collection_show.nbString }}</p>
+          <p>Fixation du manche:
+            {% if collection_show.fixation == true %}
+            Collé
+            {% else %}
+            Vissé
+            {% endif %}</p>
+          <p>Corps: {{ aesthetic.bodyMaterial }}</p>
+          <p>Forme: {{ aesthetic.form }}</p>
+          <p>Appartient à : {{ user.firstName }} {{ user.lastName }}</p>
+        </div>
 
 
     </div>

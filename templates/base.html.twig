@@ -19,8 +19,8 @@
         <header class="header">
                 <nav>
                         <div class="logo">
-                        {# doing a link to the home page #}
-                        
+                                {# doing a link to the home page #}
+
                                 <a href="{{ path("home_Page") }}">
                                         <img src="{{ asset("images/Guitar.svg") }}" alt="Logo Guitar Collection"
                                                 width="20%">
@@ -32,6 +32,9 @@
                                 </li>
                                 <li class="nav-slide-line">
                                         <a href="">A propos</a>
+                                </li>
+                                <li class="nav-slide-line">
+                                        <a href="">Posts</a>
                                 </li>
                                 <li class="nav-slide-line">
                                         <a href="{{ path("collection_page") }}">Collection</a>
@@ -59,7 +62,7 @@
                                         <h3>Voir les collections</h3>
                                         <ul class="nav-links-footer px-0">
                                                 <li><a href="">Catégories</a></li>
-                                                <li><a href="">Marques</a></li>
+                                                <li><a href="{{ path("brand_page") }}">Marques</a></li>
                                                 <li><a href="">Nouveautés</a></li>
                                         </ul>
                                 </div>
@@ -96,8 +99,8 @@
                 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
                 crossorigin="anonymous"></script>
         <script src="{{ asset("js/homeScript.js") }}"></script>
-        
-        
+
+
 </body>
 
 </html>

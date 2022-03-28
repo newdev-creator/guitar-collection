@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Guitar
 {
+
+    const FIXATION_GLUE = 1;
+    const FIXATION_SCREWED = 2;
+
+    const HAND_RIGHT = 1;
+    const HAND_LEFT = 2;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -133,6 +139,11 @@ class Guitar
         return $this;
     }
 
+    public function getDominationHandText(): ?string
+    {
+        return $this->dominationHandText === self::HAND_RIGHT ? 'Droitier' : 'Gaucher';
+    }
+
     public function getDominationHand(): ?bool
     {
         return $this->dominationHand;
@@ -155,6 +166,11 @@ class Guitar
         $this->nbString = $nbString;
 
         return $this;
+    }
+
+    public function getFixationText(): ?string
+    {
+        return $this->fixation === self::FIXATION_GLUE ? 'Collé' : 'Vissé';
     }
 
     public function getFixation(): ?bool
