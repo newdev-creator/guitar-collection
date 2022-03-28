@@ -50,7 +50,8 @@ class Post
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Category::class, mappedBy="post")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="post")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $categories;
 
