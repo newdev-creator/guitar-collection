@@ -17,12 +17,14 @@
         <div class="row">
         {% for post in post_page %}
           <div class="col-md-4">
-            <div class="card">
+          <a href="{{ path("post_show", {"id": post.id}) }}">
+            <div class="card collection-card">
               <img src="{{ post.image }}" class="card-img-top" alt="{{ post.image }}">
+              </a>
               <div class="card-body">
                 <h5 class="card-title">{{ post.title }}</h5>
                 <p class="card-text">{{ post.presentation }}</p>
-                <a href="{{ path("post_show", {"id": post.id}) }}" class="btn btn-warning">Consulter</a>
+                
               </div>
             </div>
           </div>
