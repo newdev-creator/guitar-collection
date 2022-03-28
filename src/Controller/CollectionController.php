@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Guitar;
 use App\Repository\GuitarRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,14 +30,20 @@ class CollectionController extends AbstractController
     /**
      * @Route("/{id}", name="_show", methods={"GET"})
      */
-    public function show(GuitarRepository $guitarRepository, $id): Response
+    public function show(GuitarRepository $guitarRepository, UserRepository $userRepository, $id): Response
     {
         // get guitar by id
         $guitar = $guitarRepository->find($id);
+        $aesthetic = $guitar->getAesthetic();
+        $brand = $guitar->getBrand();
+        $user = $userRepository->find($guitar->getUser()->getId());
 
         // dd($guitar);
-        return $this->render('collection/CollectionShow.html.twig', [
-            'Collection_show' => $guitar,
+        return $this->render('collection/collectionShow.html.twig', [
+            'collection_show' => $guitar,
+            'aesthetic' => $aesthetic,
+            'brand' => $brand,
+            'user' => $user,
         ]);
     }    
 }

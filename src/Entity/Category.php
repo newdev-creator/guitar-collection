@@ -25,24 +25,24 @@ class Category
     private $name;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
      * @ORM\ManyToMany(targetEntity=Guitar::class, mappedBy="category")
      */
     private $guitars;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Post::class, mappedBy="category")
+     * @ORM\ManyToMany(targetEntity=Post::class, inversedBy="categories")
      */
-    private $posts;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $image;
+    private $post;
 
     public function __construct()
     {
         $this->guitars = new ArrayCollection();
-        $this->posts = new ArrayCollection();
+        $this->post = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -58,6 +58,18 @@ class Category
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
@@ -92,16 +104,15 @@ class Category
     /**
      * @return Collection<int, Post>
      */
-    public function getPosts(): Collection
+    public function getPost(): Collection
     {
-        return $this->posts;
+        return $this->post;
     }
 
     public function addPost(Post $post): self
     {
-        if (!$this->posts->contains($post)) {
-            $this->posts[] = $post;
-            $post->addCategory($this);
+        if (!$this->post->contains($post)) {
+            $this->post[] = $post;
         }
 
         return $this;
@@ -109,21 +120,7 @@ class Category
 
     public function removePost(Post $post): self
     {
-        if ($this->posts->removeElement($post)) {
-            $post->removeCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
+        $this->post->removeElement($post);
 
         return $this;
     }

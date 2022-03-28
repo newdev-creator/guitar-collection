@@ -4,16 +4,16 @@
 
 {% block body %}
 <main>
-    <h1 class="text-center collection-title">Collection</h1>
-
+ 
     <div class="container font-family">
         <p><a class="link-dark" href="{{ path("home_Page") }}">Accueil</a>
             >
-            <a class="link-dark" href="{{ path("collection_page") }}">Collection </a>
+            <a class="link-dark" href="{{ path("brand_page") }}">Marques </a>
             >
         </p>
+    <img class="mb-2" src="{{ brand_show.image }}" alt="{{ brand_show.name }} logo">
         <div class="row">
-            {% for guitar in collection_page %}
+            {% for guitar in guitars %}
             <div class="col-md-3">
                 <div class="card collection-card">
                     <a href="{{ path("collection_show", {"id": guitar.id}) }}">
