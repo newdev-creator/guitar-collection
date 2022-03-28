@@ -6,16 +6,17 @@
 <main>
   <h1 class="text-center collection-title">{{ brand.name }} {{ aesthetic.model }}</h1>
   <div class="container pb-5 font-family">
-    <div class="row">
-      <p>
-        <p><a class="link-dark" href="{{ path("home_Page") }}">Accueil</a>
-          >
-          <a class="link-dark" href="{{ path("collection_page") }}">Collection </a>
-          >
-          <a class="link-dark" href="">{{ brand.name }} </a>
-          >
-          {{ collection_show.name }}
-        </p>
+    <p>
+      <p><a class="link-dark" href="{{ path("home_Page") }}">Accueil</a>
+        >
+        <a class="link-dark" href="{{ path("collection_page") }}">Collection </a>
+        >
+        <a class="link-dark" href="{{ path("brand_show", {"id": brand.id}) }}">{{ brand.name }} </a>
+        >
+        {{ collection_show.name }}
+      </p>
+
+      <div class="row">
         <div class="col-md-6">
           <img class="collection-image" src="{{ collection_show.image }}"
             alt="{{ brand.name }} {{ collection_show.name }}">
@@ -47,7 +48,7 @@
         </div>
 
 
-    </div>
+      </div>
   </div>
 </main>
 {% endblock %}

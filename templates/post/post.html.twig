@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<main>
+    <h1 class="text-center collection-title">Posts</h1>
+
+    <div class="container font-family">
+        <p><a class="link-dark" href="{{ path("home_Page") }}">Accueil</a>
+            >
+            <a class="link-dark" href="{{ path("post_page") }}">Posts</a>
+            >
+        </p>
+        <section>
+      <div class="container">
+        <div class="row">
+        {% for post in post_page %}
+          <div class="col-md-4">
+            <div class="card">
+              <img src="{{ post.image }}" class="card-img-top" alt="{{ post.image }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.presentation }}</p>
+                <a href="{{ path("post_show", {"id": post.id}) }}" class="btn btn-warning">Consulter</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+</main>
+{% endblock %}

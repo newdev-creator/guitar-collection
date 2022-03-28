@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<main>
+    <h1 class="text-center collection-title">Posts</h1>
+
+    <div class="container pb-5 font-family">
+        <p><a class="link-dark" href="{{ path("home_Page") }}">Accueil</a>
+            >
+            <a class="link-dark" href="{{ path("post_page") }}">Posts</a>
+            >
+            {{ post_show.title }}
+        </p>
+        
+        <div class="row">
+        <div class="col-md-6">
+        <img class="collection-image" src="{{ post_show.image }}" alt="post image">
+        </div>
+
+        <div class="col-md-6">
+        <h2>{{ post_show.title }}</h2>
+        </div>
+        </div>
+</main>
+{% endblock %}
