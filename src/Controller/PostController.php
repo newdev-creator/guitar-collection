@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Repository\CategoryRepository;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,17 +29,14 @@ class PostController extends AbstractController
     /**
      * @Route("/{id}", name="_show", methods={"GET"})
      */
-    public function show(PostRepository $postRepository,CategoryRepository $categoryRepository, $id): Response
+    public function show(PostRepository $postRepository, $id): Response
     {
         // get post by id
         $post = $postRepository->find($id);
-        // get category by id
-        $category = $categoryRepository->find($id);
 
         // dd($post);
         return $this->render('post/postShow.html.twig', [
             'post_show' => $post,
-            'category' => $category,
         ]);
     }
 }

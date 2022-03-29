@@ -50,7 +50,8 @@ class Post
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Category::class, mappedBy="post")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="post")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $categories;
 
@@ -136,29 +137,14 @@ class Post
         return $this;
     }
 
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getCategories(): Collection
+    public function getCategory(): ?Category
     {
-        return $this->categories;
+        return $this->category;
     }
 
-    public function addCategory(Category $category): self
+    public function setCategory(?Category $category): self
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-            $category->addPost($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Category $category): self
-    {
-        if ($this->categories->removeElement($category)) {
-            $category->removePost($this);
-        }
+        $this->category = $category;
 
         return $this;
     }
