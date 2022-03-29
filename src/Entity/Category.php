@@ -30,19 +30,19 @@ class Category
     private $image;
 
     /**
+     * @ORM\OneToMany(targetEntity=Post::class, mappedBy="category")
+     */
+    private $post;
+
+    /**
      * @ORM\ManyToMany(targetEntity=Guitar::class, mappedBy="category")
      */
     private $guitars;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Post::class, mappedBy="categories")
-     */
-    private $post;
-
     public function __construct()
     {
-        $this->guitars = new ArrayCollection();
         $this->post = new ArrayCollection();
+        $this->guitars = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,6 +75,36 @@ class Category
     }
 
     /**
+     * @return Collection<int, Post>
+     */
+    public function getPost(): Collection
+    {
+        return $this->post;
+    }
+
+    public function addPost(Post $post): self
+    {
+        if (!$this->post->contains($post)) {
+            $this->post[] = $post;
+            $post->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(Post $post): self
+    {
+        if ($this->post->removeElement($post)) {
+            // set the owning side to null (unless already changed)
+            if ($post->getCategory() === $this) {
+                $post->setCategory(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * @return Collection<int, Guitar>
      */
     public function getGuitars(): Collection
@@ -97,30 +127,6 @@ class Category
         if ($this->guitars->removeElement($guitar)) {
             $guitar->removeCategory($this);
         }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Post>
-     */
-    public function getPost(): Collection
-    {
-        return $this->post;
-    }
-
-    public function addPost(Post $post): self
-    {
-        if (!$this->post->contains($post)) {
-            $this->post[] = $post;
-        }
-
-        return $this;
-    }
-
-    public function removePost(Post $post): self
-    {
-        $this->post->removeElement($post);
 
         return $this;
     }

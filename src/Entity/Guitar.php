@@ -12,12 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Guitar
 {
-
-    const FIXATION_GLUE = 1;
-    const FIXATION_SCREWED = 2;
-
-    const HAND_RIGHT = 1;
-    const HAND_LEFT = 2;
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -28,7 +22,7 @@ class Guitar
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $model;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -41,6 +35,36 @@ class Guitar
     private $acquisitionAt;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $wear;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $finition;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pickups;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $neckMaterial;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $bodyMaterial;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $bodyForm;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     private $dominationHand;
@@ -48,12 +72,17 @@ class Guitar
     /**
      * @ORM\Column(type="integer")
      */
-    private $nbString;
+    private $nbFrets;
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $fixation;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
 
     /**
      * @ORM\Column(type="datetime_immutable")
@@ -66,32 +95,19 @@ class Guitar
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $image;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="guitars")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Brand::class, inversedBy="guitars")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $brand;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="guitars")
      */
     private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Aesthetic::class, inversedBy="guitars")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="guitars")
      */
-    private $Aesthetic;
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Brand::class, inversedBy="guitars")
+     */
+    private $brand;
 
     public function __construct()
     {
@@ -103,14 +119,14 @@ class Guitar
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getModel(): ?string
     {
-        return $this->name;
+        return $this->model;
     }
 
-    public function setName(string $name): self
+    public function setModel(string $model): self
     {
-        $this->name = $name;
+        $this->model = $model;
 
         return $this;
     }
@@ -139,9 +155,76 @@ class Guitar
         return $this;
     }
 
-    public function getDominationHandText(): ?string
+    public function getWear(): ?string
     {
-        return $this->dominationHandText === self::HAND_RIGHT ? 'Droitier' : 'Gaucher';
+        return $this->wear;
+    }
+
+    public function setWear(string $wear): self
+    {
+        $this->wear = $wear;
+
+        return $this;
+    }
+
+    public function getFinition(): ?string
+    {
+        return $this->finition;
+    }
+
+    public function setFinition(string $finition): self
+    {
+        $this->finition = $finition;
+
+        return $this;
+    }
+
+    public function getPickups(): ?string
+    {
+        return $this->pickups;
+    }
+
+    public function setPickups(?string $pickups): self
+    {
+        $this->pickups = $pickups;
+
+        return $this;
+    }
+
+    public function getNeckMaterial(): ?string
+    {
+        return $this->neckMaterial;
+    }
+
+    public function setNeckMaterial(?string $neckMaterial): self
+    {
+        $this->neckMaterial = $neckMaterial;
+
+        return $this;
+    }
+
+    public function getBodyMaterial(): ?string
+    {
+        return $this->bodyMaterial;
+    }
+
+    public function setBodyMaterial(?string $bodyMaterial): self
+    {
+        $this->bodyMaterial = $bodyMaterial;
+
+        return $this;
+    }
+
+    public function getBodyForm(): ?string
+    {
+        return $this->bodyForm;
+    }
+
+    public function setBodyForm(string $bodyForm): self
+    {
+        $this->bodyForm = $bodyForm;
+
+        return $this;
     }
 
     public function getDominationHand(): ?bool
@@ -156,21 +239,16 @@ class Guitar
         return $this;
     }
 
-    public function getNbString(): ?int
+    public function getNbFrets(): ?int
     {
-        return $this->nbString;
+        return $this->nbFrets;
     }
 
-    public function setNbString(int $nbString): self
+    public function setNbFrets(int $nbFrets): self
     {
-        $this->nbString = $nbString;
+        $this->nbFrets = $nbFrets;
 
         return $this;
-    }
-
-    public function getFixationText(): ?string
-    {
-        return $this->fixation === self::FIXATION_GLUE ? 'Collé' : 'Vissé';
     }
 
     public function getFixation(): ?bool
@@ -181,6 +259,18 @@ class Guitar
     public function setFixation(bool $fixation): self
     {
         $this->fixation = $fixation;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
@@ -209,42 +299,6 @@ class Guitar
         return $this;
     }
 
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    public function getBrand(): ?Brand
-    {
-        return $this->brand;
-    }
-
-    public function setBrand(?Brand $brand): self
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Category>
      */
@@ -269,14 +323,26 @@ class Guitar
         return $this;
     }
 
-    public function getAesthetic(): ?Aesthetic
+    public function getUser(): ?User
     {
-        return $this->Aesthetic;
+        return $this->user;
     }
 
-    public function setAesthetic(?Aesthetic $Aesthetic): self
+    public function setUser(?User $user): self
     {
-        $this->Aesthetic = $Aesthetic;
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getBrand(): ?Brand
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?Brand $brand): self
+    {
+        $this->brand = $brand;
 
         return $this;
     }

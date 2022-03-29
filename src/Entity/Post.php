@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,7 +23,7 @@ class Post
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=255)
      */
     private $presentation;
 
@@ -51,14 +49,8 @@ class Post
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="post")
-     * @ORM\JoinColumn(nullable=false)
      */
-    private $categories;
-
-    public function __construct()
-    {
-        $this->categories = new ArrayCollection();
-    }
+    private $category;
 
     public function getId(): ?int
     {
