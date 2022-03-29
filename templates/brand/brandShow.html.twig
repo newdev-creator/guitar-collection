@@ -17,8 +17,9 @@
             <div class="col-md-3">
                 <div class="card collection-card">
                     <a href="{{ path("collection_show", {"id": guitar.id}) }}">
-                        <img class="collection-image" src="{{ guitar.image }}" alt="{{ guitar.name }}">
-                        <h2 class="text-center">{{ guitar.name }}</h2>
+                        <img class="collection-image" src="{{ guitar.image }}" alt="{{ guitar.model }} guitar">
+                        <h2 class="text-center">{{ guitar.model }}</h2>
+                        <p class="text-center">{{ guitar.brand.name }}</p>
                     </a>
                 </div>
             </div>

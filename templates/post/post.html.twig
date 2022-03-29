@@ -4,6 +4,7 @@
 
 {% block body %}
 <main>
+
     <h1 class="text-center collection-title">Posts</h1>
 
     <div class="container font-family">
@@ -14,6 +15,12 @@
         </p>
         <section>
       <div class="container">
+      <h3>Trier par categories:</h3>
+      {% for categorie in categories %}
+      <a href="{{ path("post_show_category", {"id": categorie.id}) }}">
+      <button type="button" class="btn btn-outline-primary mb-3">{{ categorie.name }}</button>
+      </a>
+      {% endfor %}
         <div class="row">
         {% for post in post_page %}
           <div class="col-md-4">

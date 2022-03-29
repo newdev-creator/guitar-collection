@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Guitar;
+use App\Repository\BrandRepository;
 use App\Repository\GuitarRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,14 +17,17 @@ class CollectionController extends AbstractController
     /**
      * @Route("/", name="_page", methods={"GET"})
      */
-    public function collectionPage(GuitarRepository $guitarRepository): Response
+    public function collectionPage(GuitarRepository $guitarRepository, BrandRepository $brandRepository): Response
     {
         // get all guitars
         $allGuitars = $guitarRepository->findAll();
+        // get all brands
+        $brands = $brandRepository->findAll();
 
         // dd($allGuitars);
         return $this->render('collection/collectionPage.html.twig', [
             'collection_page' => $allGuitars,
+            'brands' => $brands,
         ]);
     }
 
@@ -34,14 +38,12 @@ class CollectionController extends AbstractController
     {
         // get guitar by id
         $guitar = $guitarRepository->find($id);
-        $aesthetic = $guitar->getAesthetic();
         $brand = $guitar->getBrand();
         $user = $userRepository->find($guitar->getUser()->getId());
 
         // dd($guitar);
         return $this->render('collection/collectionShow.html.twig', [
             'collection_show' => $guitar,
-            'aesthetic' => $aesthetic,
             'brand' => $brand,
             'user' => $user,
         ]);
