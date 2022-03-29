@@ -14,10 +14,14 @@
             >
         </p>
 
-        <h3>Trier par categories:</h3>
+        <h3>Trier par marques:</h3>
         {% for brand in brands %}
-        <a href="{{ path("brand_show", {"id": brand.id}) }}"><button type="button" class="btn btn-outline-primary mb-3">{{ brand.name }}</button></a>
+        <button type="button" class="btn btn-outline-primary mb-3"
+        onclick="location.href='{{ path("brand_show", {"id": brand.id}) }}'">
+          {{ brand.name }}
+        </button>
         {% endfor %}
+
         <div class="row">
             {% for guitar in collection_page %}
             <div class="col-md-3">

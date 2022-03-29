@@ -22,7 +22,7 @@
       {% if categorie.name == category_name %}
         active
       {% endif %}"
-        onclick="location.href='{{ path("post_page", {'category_name': categorie.name}) }}'">
+        onclick="location.href='{{ path("post_show_category", {"id": categorie.id}) }}'">
           {{ categorie.name }}
         </button>
         {% endfor %}

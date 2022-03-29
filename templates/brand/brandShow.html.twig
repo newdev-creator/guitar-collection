@@ -4,13 +4,17 @@
 
 {% block body %}
 <main>
- 
+
     <div class="container font-family">
         <p><a class="link-dark" href="{{ path("home_Page") }}">Accueil</a>
             >
             <a class="link-dark" href="{{ path("brand_page") }}">Marques </a>
             >
+            {{ brand_show.name }}
         </p>
+
+
+
     <img class="mb-2 img-fluid" src="{{ brand_show.image }}" alt="{{ brand_show.name }} logo">
         <div class="row">
             {% for guitar in guitars %}

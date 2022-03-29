@@ -17,9 +17,10 @@
       <div class="container">
       <h3>Trier par categories:</h3>
       {% for categorie in categories %}
-      <a href="{{ path("post_show_category", {"id": categorie.id}) }}">
-      <button type="button" class="btn btn-outline-primary mb-3">{{ categorie.name }}</button>
-      </a>
+      <button type="button" class="btn btn-outline-primary mb-3"
+        onclick="location.href='{{ path("post_show_category", {"id": categorie.id}) }}'">
+          {{ categorie.name }}
+        </button>
       {% endfor %}
         <div class="row">
         {% for post in post_page %}
