@@ -16,6 +16,15 @@
 
 
     <img class="mb-2 img-fluid" src="{{ brand_show.image }}" alt="{{ brand_show.name }} logo">
+
+    <h3>Trier par marques:</h3>
+        {% for brand in all_brands %}
+        <button type="button" class="btn btn-outline-primary mb-3"
+        onclick="location.href='{{ path("brand_show", {"id": brand.id}) }}'">
+          {{ brand.name }}
+        </button>
+        {% endfor %}
+
         <div class="row">
             {% for guitar in guitars %}
             <div class="col-md-3">

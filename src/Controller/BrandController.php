@@ -34,11 +34,14 @@ class BrandController extends AbstractController
         // get brand by id
         $brand = $brandRepository->find($id);
         $guitars = $brand->getGuitars();
+        // get all brands
+        $allBrands = $brandRepository->findAll();
         
         // dd($brand, $guitars, $allBrandImages);
         return $this->render('brand/brandShow.html.twig', [
             'brand_show' => $brand,
             'guitars' => $guitars,
+            'all_brands' => $allBrands,
         ]);
     }
 }
