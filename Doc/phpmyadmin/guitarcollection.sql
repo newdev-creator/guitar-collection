@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : jeu. 24 mars 2022 à 13:25
+-- Généré le : mar. 29 mars 2022 à 13:29
 -- Version du serveur : 5.7.33
 -- Version de PHP : 7.4.19
 
@@ -24,51 +24,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `aesthetic`
---
-
-CREATE TABLE `aesthetic` (
-  `id` int(11) NOT NULL,
-  `wear` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `finition` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pickups` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `model` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `neck_material` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `body_material` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `body_form` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Déchargement des données de la table `aesthetic`
---
-
-INSERT INTO `aesthetic` (`id`, `wear`, `finition`, `pickups`, `model`, `neck_material`, `body_material`, `body_form`) VALUES
-(1, 'Neuf', 'Aged White', 'sss', 'Deluxe', 'Chêne', 'Peuplié', 'Stratocaster'),
-(2, 'très usé', 'Noir', 'HH model d\'usine', 'Custom', 'Acajou', 'Acajou', 'Les Paul'),
-(3, 'Player', 'Rouge', 'HH Seymour h1, Oripur', 'Roxanne', 'Acajou', 'Acajou', 'SG'),
-(4, 'Player', 'Transparent', 'sans', 'G series', 'ne sais pas', 'ne sais pas', 'Acoustique');
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `brand`
 --
 
 CREATE TABLE `brand` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `guitar_id` int(11) NOT NULL
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
+  `updated_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `brand`
 --
 
-INSERT INTO `brand` (`id`, `name`, `guitar_id`) VALUES
-(1, 'Gibson', 2),
-(2, 'Lag', 1),
-(3, 'Fender', 3),
-(4, 'Takamine', 4);
+INSERT INTO `brand` (`id`, `name`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Lag', 'https://tse1.mm.bing.net/th?id=OIP.LYaS0JmPfKFGMWylzRW3-AHaC3&pid=Api', '2022-03-29 11:20:08', '2022-03-29 11:20:08'),
+(2, 'Fender', 'https://tse1.mm.bing.net/th?id=OIP.6P0ZCOAwVPc8VyIzi_vQyQHaE4&pid=Api', '2022-03-29 11:20:08', '2022-03-29 11:20:08');
 
 -- --------------------------------------------------------
 
@@ -78,18 +51,17 @@ INSERT INTO `brand` (`id`, `name`, `guitar_id`) VALUES
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `category`
 --
 
-INSERT INTO `category` (`id`, `name`) VALUES
-(1, 'Enquête'),
-(2, 'Guitare'),
-(3, 'Guitariste'),
-(4, 'Luthier');
+INSERT INTO `category` (`id`, `name`, `image`) VALUES
+(1, 'new', NULL),
+(2, 'people', NULL);
 
 -- --------------------------------------------------------
 
@@ -108,10 +80,10 @@ CREATE TABLE `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20220324093612', '2022-03-24 09:36:56', 137),
-('DoctrineMigrations\\Version20220324100404', '2022-03-24 10:04:11', 495),
-('DoctrineMigrations\\Version20220324100948', '2022-03-24 10:10:00', 151),
-('DoctrineMigrations\\Version20220324102051', '2022-03-24 10:20:58', 160);
+('DoctrineMigrations\\Version20220329093110', '2022-03-29 09:31:32', 55),
+('DoctrineMigrations\\Version20220329093312', '2022-03-29 09:33:16', 114),
+('DoctrineMigrations\\Version20220329094840', '2022-03-29 09:48:44', 230),
+('DoctrineMigrations\\Version20220329095036', '2022-03-29 09:50:41', 185);
 
 -- --------------------------------------------------------
 
@@ -121,27 +93,33 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 
 CREATE TABLE `guitar` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `model` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `year` int(11) DEFAULT NULL,
   `acquisition_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)',
-  `domination_hang` tinyint(1) NOT NULL,
-  `nb_string` int(11) NOT NULL,
+  `wear` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `finition` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pickups` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `neck_material` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body_material` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body_form` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `domination_hand` tinyint(1) NOT NULL,
+  `nb_frets` int(11) NOT NULL,
   `fixation` tinyint(1) NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   `updated_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
-  `aesthetic_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `brand_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `guitar`
 --
 
-INSERT INTO `guitar` (`id`, `name`, `year`, `acquisition_at`, `domination_hang`, `nb_string`, `fixation`, `created_at`, `updated_at`, `aesthetic_id`, `user_id`) VALUES
-(1, 'Roxanne', 2001, '2012-03-01 13:43:34', 1, 22, 1, '2022-03-24 12:43:34', '2022-03-24 12:43:34', 3, 1),
-(2, 'Black beauty', 1970, '2012-01-03 06:43:34', 1, 22, 1, '2022-03-24 12:43:34', '2022-03-24 12:43:34', 2, 1),
-(3, 'White', 2010, '2012-03-01 14:10:01', 1, 22, 2, '2022-03-24 13:10:01', '2022-03-24 13:10:01', 1, 1),
-(4, 'Takamine', 2008, '2014-03-05 14:10:01', 1, 22, 1, '2022-03-24 13:10:01', '2022-03-24 13:10:01', 4, 1);
+INSERT INTO `guitar` (`id`, `user_id`, `model`, `year`, `acquisition_at`, `wear`, `finition`, `pickups`, `neck_material`, `body_material`, `body_form`, `domination_hand`, `nb_frets`, `fixation`, `image`, `created_at`, `updated_at`, `brand_id`) VALUES
+(1, 1, 'Roxanne', 2001, '2022-03-02 13:20:57', 'played', 'Red', 'HH', 'Mahogany', 'Mahogany', 'SG', 1, 22, 1, 'https://tse2.mm.bing.net/th?id=OIP.ZIscvIEAc9h4FJErktsYYwHaJ4&pid=Api', '2022-03-29 11:20:57', '2022-03-29 11:20:57', 1),
+(2, 2, 'American Vintage 62\' Custom', 2018, '2018-03-15 13:20:57', 'New', 'Sunburn', 'SS', NULL, NULL, 'Telcaster', 1, 21, 2, 'https://tse1.mm.bing.net/th?id=OIP.JAuuw9sm56z0i0qvp3PYzQHaFj&pid=Api', '2022-03-29 11:20:57', '2022-03-29 11:20:57', 2),
+(3, 1, 'Deluxe', 2008, '2010-10-26 14:41:23', 'Nice', 'aged white', 'SSS', NULL, NULL, 'Stratocaster', 1, 22, 2, 'https://tse3.mm.bing.net/th?id=OIP.1L5PEco5K2AfQ97KwTuFbQHaE5&pid=Api', '2022-03-29 12:41:23', '2022-03-29 12:41:23', 2);
 
 -- --------------------------------------------------------
 
@@ -163,31 +141,22 @@ CREATE TABLE `guitar_category` (
 CREATE TABLE `post` (
   `id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `synopsis` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `presentation` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `synopsis` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
-  `updated_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)'
+  `updated_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
+  `category_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `post`
 --
 
-INSERT INTO `post` (`id`, `title`, `synopsis`, `created_at`, `updated_at`) VALUES
-(1, 'RED HOT CHILI PEPPERS TO BE AWARDED A STAR ON THE HOLLYWOOD WALK OF FAME', 'Marking their four decades of music, the unveiling is scheduled for Thursday, 31 March at 11:30 AM.\r\n\r\nThe band will receive the 2,717th star on the Walk of Fame, which will be located in the second row at 6212 Hollywood Boulevard, next to TV producer Harry Friedman’s star, and adjacent to Amoeba Records.\r\n\r\nThe star will be unveiled by Parliament-Funkadelic’s George Clinton, who also produced the band’s second album in 1985, Freaky Styley. Woody Harrelson, Bob Forrest, and the Hollywood Chamber of Commerce chairwoman Nicole Mihalka will also attend.', '2022-03-24 13:18:13', '2022-03-24 13:18:13'),
-(2, 'BOSS REVIVES THE ICONIC ROLAND SPACE ECHO IN THE RE-202 AND RE-2 DIGITAL PEDALS', 'The RE-202 is positioned as an accurate digital recreation of the original magnetic tape echo machine without the need for troublesome hardware maintenance. It’s said to replicate all the major features of the original – from its 12-position mode selector to subtle pitch fluctuations that come from tweaking the Repeat Rate knob – but adds some modern features too.\r\n\r\nDelay length has been doubled, and the RE-202 further accommodates tap tempo and onboard presets. Meanwhile, a fourth virtual tape head extends its sonic variety with five additional sound combinations. Players also have the option of using the warm and rounded preamp sound of the original, or opt for a completely clean signal with no processing. Further, the RE-202 also has a true stereo I/O to accommodate multi-amp setups.', '2022-03-24 13:18:13', '2022-03-24 13:18:13'),
-(3, 'MARTIN GUITAR ANNOUNCES MATTHEW KENNEDY AS NEWEST BOARD OF DIRECTORS MEMBER', 'Martin Guitar has announced that it has elected Matthew Kennedy as a new member of its board of directors. Kennedy has been employed by Martin for almost 10 years, and has sat on the board of the Martin Guitar Charitable Foundation since December 2020.\r\n\r\nKennedy’s appointment follows the passing of Diane Martin. As well as being a board member, Diane was the wife of Executive Chairman Chris Martin IV, and chair of the Martin Guitar Charitable Foundation. She died in January following a lengthy battle with cancer.\r\n\r\nChris Martin explained in a press statement: “Matt will be assuming Diane’s position as a representative of the Martin family, along with me, on the board of our closely held family business.\r\n\r\n“Matt shares many of the values that made Diane an incredibly kind and beloved human being to everyone who knew her. She and Matt have always shared a fair and just outlook on life and business, carrying on their duties without privilege or ego. I look forward to helping Matt learn about how to guide our precious family business into the future.”\r\n\r\n“I’m truly honoured to accept a position on Martin’s Board of Directors,” added Kennedy. “I hope to make my aunt proud by ensuring that her never-ending voice for inclusivity and equality continues to resound with each decision that is made on behalf of the board. I feel a deep sense of responsibility to do what I can to make sure my family’s business and all of my coworkers continue to thrive for the foreseeable future.”', '2022-03-24 13:18:49', '2022-03-24 13:18:49'),
-(4, 'FENDER’S JV MODIFIED SERIES TAKES CUES FROM THE JAPANESE VINTAGE REISSUES OF THE 80S', 'Dripping with vintage Fender DNA, this Stratocaster offers three vintage-style single-coils along with a push-pull pot on the second tone knob for more tonal variety; engaging it adds the neck pickup to positions one (bridge pickup only) and two (bridge and middle pickup) of the blade switch. Aside from that, it features a satin finished soft V maple neck with medium jumbo frets.', '2022-03-24 13:18:49', '2022-03-24 13:18:49');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `post_category`
---
-
-CREATE TABLE `post_category` (
-  `post_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `post` (`id`, `title`, `presentation`, `synopsis`, `image`, `created_at`, `updated_at`, `category_id`) VALUES
+(1, 'CHASE BLISS HABIT: IS THIS A NEW DELAY FROM THE EXPERIMENTAL PEDAL BUILDERS?', 'The brand is due to announce later this week its first new pedals since 2020.', 'On Sunday (27 March), users of The Gear Page forum flocked to a thread  “New Chase Bliss pedal…Habit Echo Collector” to discuss the allegedly upcoming pedal.\r\n\r\nThe image (above) shared by user DelayLover in the thread they started pictured a pedal with a yellow enclosure emblazoned with the moniker, Habit, and equipped with six knobs, four switches and two footswitches.\r\n\r\n“My thought is it’ll be some sort of digital experimental delay pedal,” speculated one user. “Maybe granular, pitch shift, little bit of ‘count to 5’, little bit of Red Panda stuff. Could be wrong but it’s making me feel this way.”\r\n\r\nA listing, now taken down, from US instrument retailer American Music appeared to reveal that the pedal will be an “Experimental Delay W/Memory” priced at $399.99. However, the page did not appear to provide any visuals relating to the one shared in the Gear Page post.', 'https://guitar.com/wp-content/uploads/2022/03/Chase-Bliss-Habit-Gear-Page@2000x1500-696x522.jpg', '2022-03-29 09:59:21', '2022-03-29 09:59:21', 1),
+(2, 'THE ROLLING STONES’ LEGENDARY 1977 SECRET SHOWS AT THE EL MOCAMBO TO SEE FIRST-EVER OFFICIAL RELEASE', 'The recordings were taken in a tiny Toronto venue.', 'In 1977, fans appeared at the 300-capacity El Mocambo venue in Toronto, Canada, expecting to see April Wine supported by a band called The Cockroaches. In reality, April WIne were supporting, and The Cockroaches were actually The Rolling Stones. The band’s two nights at the venue are now set to be officially released for the first time in May.\r\n\r\nREAD MORE: Keith Richards confirms Rolling Stones are writing with drummer Steve Jordan: “We came up with eight or nine new pieces of material”\r\nThe setlists for the two nights spanned a range of the band’s catalogue, and some blues covers such as Little Red Rooster, Mannish Boy and Worried Life Blues. They touched on some hits, including Jumpin’ Jack Flash and Brown Sugar, as well as Hot Stuff, Hand Of Fate and Melody taken from their newly-released LP Black And Blue.\r\n\r\nAhead of the official release of the live album, the band have released two tracks: Rip This Joint and It’s Only Rock N’ Roll (But I Like It). Check them out below.', 'https://guitar.com/wp-content/uploads/2022/03/the-rolling-stones@2000x1500-696x522.jpg', '2022-03-29 09:59:21', '2022-03-29 09:59:21', 1),
+(3, 'PLINI UNVEILS TWO NEW-AND-UPDATED SIGNATURE GUITARS WITH STRANDBERG: THE PROG NX 6 AND NECK-THRU BLACK', 'The prog guitarist teams up with the company once more to reconstruct his signature designs and launch his third and fourth models for the brand.', 'Australian guitar virtuoso Plini has recently re-teamed up with Strandberg to debut the new, overhauled version of his two flagship models: the Boden Plini Edition and the Neck-Thru Natural.\r\n\r\nREAD MORE: Gibson Revives A Lost Ted McCarty Design From the 1950s With The Theodore\r\nRedesigning and upgrading the spec sheet of the original designs, the Boden Prog NX 6 and Neck-Thru Black boast an all-new look for the signature designs, yet maintain the vital aspects that made the originals quite so highly acclaimed.\r\n\r\nFirst looking at the Boden Prog NX 6, the remake of the initial Boden Plini Edition, the upgraded spec redesigns the original blueprint to showcase a new body, neck and fretboard materials and incorporates the newly-debuted Plini humbuckers.\r\n\r\nNow upgrading the initial swamp ash body with a chambered mahogany alternative and redesigning the neck as mahogany rather than the original roasted maple, the new launch overhauls the first edition as a new, lighter-weight alternative.', 'https://guitar.com/wp-content/uploads/2022/03/Plini-Signature-Strandberg-Boden-Models@JPEG-696x392.jpeg', '2022-03-29 12:53:18', '2022-03-29 12:53:18', 1);
 
 -- --------------------------------------------------------
 
@@ -200,6 +169,7 @@ CREATE TABLE `user` (
   `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   `updated_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -208,28 +178,19 @@ CREATE TABLE `user` (
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `created_at`, `updated_at`) VALUES
-(1, 'Julien', 'Freisa', 'moi@moi.com', '2022-03-24 12:35:05', '2022-03-24 12:35:05'),
-(2, 'Jimmy', 'Page', 'Jimmy@jimmy.com', '2022-03-24 12:35:05', '2022-03-24 12:35:05'),
-(5, 'John', 'Frusciante', 'john@john.com', '2022-03-24 12:36:17', '2022-03-24 12:36:17'),
-(6, 'Brian', 'May', 'brian@brian.com', '2022-03-24 12:36:17', '2022-03-24 12:36:17');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `image`, `created_at`, `updated_at`) VALUES
+(1, 'Lomahn', 'Stern', 'stern@stern', 'https://cdn.pixabay.com/photo/2015/08/16/12/36/man-890877__340.jpg', '2022-03-29 11:17:09', '2022-03-29 11:17:09'),
+(2, 'Céline', 'Pool', 'pool@pool.com', 'https://cdn.pixabay.com/photo/2015/09/17/14/24/woman-944261__340.jpg', '2022-03-29 11:17:09', '2022-03-29 11:17:09');
 
 --
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `aesthetic`
---
-ALTER TABLE `aesthetic`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Index pour la table `brand`
 --
 ALTER TABLE `brand`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `IDX_1C52F95848420B1E` (`guitar_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `category`
@@ -248,8 +209,8 @@ ALTER TABLE `doctrine_migration_versions`
 --
 ALTER TABLE `guitar`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `IDX_423AC30D3712B658` (`aesthetic_id`),
-  ADD KEY `IDX_423AC30DA76ED395` (`user_id`);
+  ADD KEY `IDX_423AC30DA76ED395` (`user_id`),
+  ADD KEY `IDX_423AC30D44F5D008` (`brand_id`);
 
 --
 -- Index pour la table `guitar_category`
@@ -263,15 +224,8 @@ ALTER TABLE `guitar_category`
 -- Index pour la table `post`
 --
 ALTER TABLE `post`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `post_category`
---
-ALTER TABLE `post_category`
-  ADD PRIMARY KEY (`post_id`,`category_id`),
-  ADD KEY `IDX_B9A190604B89032C` (`post_id`),
-  ADD KEY `IDX_B9A1906012469DE2` (`category_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_5A8A6C8D12469DE2` (`category_id`);
 
 --
 -- Index pour la table `user`
@@ -284,56 +238,44 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT pour la table `aesthetic`
---
-ALTER TABLE `aesthetic`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
 -- AUTO_INCREMENT pour la table `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `guitar`
 --
 ALTER TABLE `guitar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Contraintes pour les tables déchargées
 --
 
 --
--- Contraintes pour la table `brand`
---
-ALTER TABLE `brand`
-  ADD CONSTRAINT `FK_1C52F95848420B1E` FOREIGN KEY (`guitar_id`) REFERENCES `guitar` (`id`);
-
---
 -- Contraintes pour la table `guitar`
 --
 ALTER TABLE `guitar`
-  ADD CONSTRAINT `FK_423AC30D3712B658` FOREIGN KEY (`aesthetic_id`) REFERENCES `aesthetic` (`id`),
+  ADD CONSTRAINT `FK_423AC30D44F5D008` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`),
   ADD CONSTRAINT `FK_423AC30DA76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
@@ -344,11 +286,10 @@ ALTER TABLE `guitar_category`
   ADD CONSTRAINT `FK_6369AA5948420B1E` FOREIGN KEY (`guitar_id`) REFERENCES `guitar` (`id`) ON DELETE CASCADE;
 
 --
--- Contraintes pour la table `post_category`
+-- Contraintes pour la table `post`
 --
-ALTER TABLE `post_category`
-  ADD CONSTRAINT `FK_B9A1906012469DE2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_B9A190604B89032C` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`) ON DELETE CASCADE;
+ALTER TABLE `post`
+  ADD CONSTRAINT `FK_5A8A6C8D12469DE2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

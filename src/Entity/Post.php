@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,7 +23,7 @@ class Post
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=255)
      */
     private $presentation;
 
@@ -50,14 +48,9 @@ class Post
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Category::class, mappedBy="post")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="post")
      */
-    private $categories;
-
-    public function __construct()
-    {
-        $this->categories = new ArrayCollection();
-    }
+    private $category;
 
     public function getId(): ?int
     {
@@ -136,29 +129,14 @@ class Post
         return $this;
     }
 
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getCategories(): Collection
+    public function getCategory(): ?Category
     {
-        return $this->categories;
+        return $this->category;
     }
 
-    public function addCategory(Category $category): self
+    public function setCategory(?Category $category): self
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-            $category->addPost($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Category $category): self
-    {
-        if ($this->categories->removeElement($category)) {
-            $category->removePost($this);
-        }
+        $this->category = $category;
 
         return $this;
     }
