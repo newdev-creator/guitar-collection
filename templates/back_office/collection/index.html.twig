@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guitar index{% endblock %}
+
+{% block body %}
+    <h1>Guitar index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>AcquisitionAt</th>
+                <th>Wear</th>
+                <th>Finition</th>
+                <th>Pickups</th>
+                <th>NeckMaterial</th>
+                <th>BodyMaterial</th>
+                <th>BodyForm</th>
+                <th>DominationHand</th>
+                <th>NbFrets</th>
+                <th>Fixation</th>
+                <th>Image</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for guitar in guitars %}
+            <tr>
+                <td>{{ guitar.id }}</td>
+                <td>{{ guitar.model }}</td>
+                <td>{{ guitar.year }}</td>
+                <td>{{ guitar.acquisitionAt ? guitar.acquisitionAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ guitar.wear }}</td>
+                <td>{{ guitar.finition }}</td>
+                <td>{{ guitar.pickups }}</td>
+                <td>{{ guitar.neckMaterial }}</td>
+                <td>{{ guitar.bodyMaterial }}</td>
+                <td>{{ guitar.bodyForm }}</td>
+                <td>{{ guitar.dominationHand ? 'Yes' : 'No' }}</td>
+                <td>{{ guitar.nbFrets }}</td>
+                <td>{{ guitar.fixation ? 'Yes' : 'No' }}</td>
+                <td>{{ guitar.image }}</td>
+                <td>{{ guitar.createdAt ? guitar.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ guitar.updatedAt ? guitar.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_back_office_collection_show', {'id': guitar.id}) }}">show</a>
+                    <a href="{{ path('app_back_office_collection_edit', {'id': guitar.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_back_office_collection_new') }}">Create new</a>
+{% endblock %}

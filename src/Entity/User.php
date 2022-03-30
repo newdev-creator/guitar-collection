@@ -67,6 +67,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $guitars;
 
+    public function __toString()
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
+
     public function __construct()
     {
         $this->guitars = new ArrayCollection();
