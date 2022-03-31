@@ -5,58 +5,51 @@ namespace App\Controller\BackOffice;
 use App\Entity\Guitar;
 use App\Form\GuitarType;
 use App\Repository\GuitarRepository;
+use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/back/office/collection")
+ * @Route("/back/office/collection", name="back_office_collection")
  */
 class CollectionController extends AbstractController
 {
     /**
-     * @Route("/", name="app_back_office_collection_index", methods={"GET"})
+     * @Route("/", name="_browse", methods={"GET"})
      */
-    public function index(GuitarRepository $guitarRepository): Response
+    public function browse(GuitarRepository $guitarRepository): Response
     {
-        return $this->render('back_office/collection/index.html.twig', [
+        return $this->render('back_office/collection/browse.html.twig', [
             'guitars' => $guitarRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="app_back_office_collection_new", methods={"GET", "POST"})
+     * @Route("/read/{id}", name="_read", methods={"GET"}, requirements={"id"="\d+"})
      */
-    public function new(Request $request, GuitarRepository $guitarRepository): Response
+    public function read(Guitar $guitar): Response
     {
-        $guitar = new Guitar();
-        $form = $this->createForm(GuitarType::class, $guitar);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $guitarRepository->add($guitar);
-            return $this->redirectToRoute('app_back_office_collection_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('back_office/collection/new.html.twig', [
-            'guitar' => $guitar,
-            'form' => $form,
+        $collectionForm = $this->createForm(GuitarType::class, $guitar, [
+            'disabled' => 'disabled',
         ]);
-    }
 
-    /**
-     * @Route("/{id}", name="app_back_office_collection_show", methods={"GET"})
-     */
-    public function show(Guitar $guitar): Response
-    {
-        return $this->render('back_office/collection/show.html.twig', [
+        $collectionForm
+            ->add('createdAt', null, [
+                'widget' => 'single_text',
+            ])
+            ->add('updatedAt', null, [
+                'widget' => 'single_text',
+            ]);
+
+        return $this->render('back_office/collection/read.html.twig', [
             'guitar' => $guitar,
         ]);
     }
 
     /**
-     * @Route("/{id}/edit", name="app_back_office_collection_edit", methods={"GET", "POST"})
+     * @Route("/edit/{id}", name="_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
     public function edit(Request $request, Guitar $guitar, GuitarRepository $guitarRepository): Response
     {
@@ -64,8 +57,14 @@ class CollectionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $guitarRepository->add($guitar);
-            return $this->redirectToRoute('app_back_office_collection_index', [], Response::HTTP_SEE_OTHER);
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $guitar->setUpdatedAt(new DateTimeImmutable());
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Le model `{$guitar->getModel()}` a bien été modifiée');
+            // $guitarRepository->add($guitar);
+            return $this->redirectToRoute('back_office_collection_brows', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back_office/collection/edit.html.twig', [
@@ -75,7 +74,27 @@ class CollectionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_back_office_collection_delete", methods={"POST"})
+     * @Route("/add", name="_add", methods={"GET", "POST"})
+     */
+    public function add(Request $request, GuitarRepository $guitarRepository): Response
+    {
+        $guitar = new Guitar();
+        $form = $this->createForm(GuitarType::class, $guitar);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $guitarRepository->add($guitar);
+            return $this->redirectToRoute('back_office_collection_browse', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('back_office/collection/add.html.twig', [
+            'guitar' => $guitar,
+            'form' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("delete/{id}", name="_delete", methods={"POST"}, requirements={"id"="\d+"})
      */
     public function delete(Request $request, Guitar $guitar, GuitarRepository $guitarRepository): Response
     {
@@ -83,6 +102,6 @@ class CollectionController extends AbstractController
             $guitarRepository->remove($guitar);
         }
 
-        return $this->redirectToRoute('app_back_office_collection_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('back_office_collection_browse', [], Response::HTTP_SEE_OTHER);
     }
 }
