@@ -41,7 +41,7 @@ class GuitarType extends AbstractType
             ->add('bodyForm', null, [
                 'label' => 'Forme du corps',
             ])
-            ->add('dominationHand', RadioType::class, [
+            ->add('dominationHand', ChoiceType::class, [
                 'label' => 'Sens du manche',
                 'choices' => [
                     'Droitier' => '1',
