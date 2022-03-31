@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Guitar;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,23 +14,65 @@ class GuitarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('model')
-            ->add('year')
-            ->add('acquisitionAt')
-            ->add('wear')
-            ->add('finition')
-            ->add('pickups')
-            ->add('neckMaterial')
-            ->add('bodyMaterial')
-            ->add('bodyForm')
-            ->add('dominationHand')
-            ->add('nbFrets')
-            ->add('fixation')
-            ->add('image')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('user')
-            ->add('brand')
+            ->add('model', null, [
+                'label' => 'Model de guitar',
+            ])
+            ->add('year', null, [
+                'label' => 'Année de fabrication',
+            ])
+            ->add('acquisitionAt', null, [
+                'label' => 'Date d\'acquisition',
+            ])
+            ->add('wear', null, [
+                'label' => 'Usure',
+            ])
+            ->add('finition', null, [
+                'label' => 'Finition',
+            ])
+            ->add('pickups', null, [
+                'label' => 'Micros',
+            ])
+            ->add('neckMaterial', null, [
+                'label' => 'Matériau du manche',
+            ])
+            ->add('bodyMaterial', null, [
+                'label' => 'Matériau du corps',
+            ])
+            ->add('bodyForm', null, [
+                'label' => 'Forme du corps',
+            ])
+            ->add('dominationHand', RadioType::class, [
+                'label' => 'Sens du manche',
+                'choices' => [
+                    'Droitier' => '1',
+                    'Gaucher' => '2',
+                ],
+            ])
+            ->add('nbFrets', null, [
+                'label' => 'Nombre de frets',
+            ])
+            ->add('fixation', ChoiceType::class, [
+                'label' => 'Fixation du manche',
+                'choices' => [
+                    'Collé' => '1',
+                    'Vissé' => '2',
+                ],
+            ])
+            ->add('image', null, [
+                'label' => 'Image',
+            ])
+            ->add('createdAt', null, [
+                'label' => 'Date d\'enregistrement de l\'instrument',
+            ])
+            ->add('updatedAt', null, [
+                'label' => 'Date de modification de l\'instrument',
+            ])
+            ->add('user', null, [
+                'label' => 'Utilisateur',
+            ])
+            ->add('brand', null, [
+                'label' => 'Marque',
+            ])
         ;
     }
 

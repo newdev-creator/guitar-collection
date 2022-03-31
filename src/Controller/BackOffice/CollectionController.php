@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/back/office/collection", name="back_office_collection")
+ * @Route("/backOffice/collection", name="back_office_collection")
  */
 class CollectionController extends AbstractController
 {
