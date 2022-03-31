@@ -27,7 +27,6 @@ class GuitarType extends AbstractType
             ->add('image')
             ->add('createdAt')
             ->add('updatedAt')
-            ->add('category')
             ->add('user')
             ->add('brand')
         ;

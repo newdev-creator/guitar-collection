@@ -1,0 +1,9 @@
+.table-fixed {
+  width: 100%;
+}
+
+tbody{
+  height:200px;
+  overflow-y:auto;
+  width: 100%;
+  }
