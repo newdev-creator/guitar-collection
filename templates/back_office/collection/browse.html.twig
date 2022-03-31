@@ -4,6 +4,7 @@
 
 
 {% block body %}
+
 <div class="container font-family">
     {{ include('_partials/_flash_messages.html.twig') }}
     
@@ -12,8 +13,8 @@
     <a href="{{ path('back_office_collection_add') }}" class="btn btn-warning">+ Ajouter une nouvelle guitare</a>
     </div>
     
-    {% for guitar in guitars %}
-    <h2 class="mt-5">{{ guitar.brand.name }}</h2>
+    {% for brand in brands %}
+    <h2 class="mt-5">{{ brand.name }}</h2>
     <div class="table-responsive">
     <table class="table table-striped table-fixed text-center">
         <thead>
@@ -34,8 +35,9 @@
             </tr>
         </thead>
 
-        {% if guitar.brand.name == guitar.brand.name %}
-         <tbody>
+        {% for guitar in guitars %}
+            {% if brand.name == guitar.brand.name %}
+            <tbody>
             <tr>
                 <th scope="row">{{ guitar.id }}</th>
                 <td>{{ guitar.model }}</td>
@@ -74,7 +76,10 @@
             </tr>
             
         </tbody>
-        {% endif %}
+            {% endif %}
+        {% endfor %}
+            
+         
        
     </table>
     </div>

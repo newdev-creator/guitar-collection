@@ -4,8 +4,10 @@ namespace App\Controller\BackOffice;
 
 use App\Entity\Guitar;
 use App\Form\GuitarType;
+use App\Repository\BrandRepository;
 use App\Repository\GuitarRepository;
 use DateTimeImmutable;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,10 +21,16 @@ class CollectionController extends AbstractController
     /**
      * @Route("/", name="_browse", methods={"GET"})
      */
-    public function browse(GuitarRepository $guitarRepository): Response
+    public function browse(GuitarRepository $guitarRepository, BrandRepository $brandRepository): Response
     {
+
+        $brands = $brandRepository->findAll();
+        $allGuitars = $guitarRepository->findAll();
+        
+        // dd ($brands, $allGuitars);
         return $this->render('back_office/collection/browse.html.twig', [
-            'guitars' => $guitarRepository->findAll(),
+            'guitars' => $allGuitars,
+            'brands' => $brands,
         ]);
     }
 
@@ -51,20 +59,22 @@ class CollectionController extends AbstractController
     /**
      * @Route("/edit/{id}", name="_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
-    public function edit(Request $request, Guitar $guitar, GuitarRepository $guitarRepository): Response
+    public function edit(Request $request, Guitar $guitar, GuitarRepository $guitarRepository, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(GuitarType::class, $guitar);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+            // getDoctrine deprecated
+            // $entityManager = $this->getDoctrine()->getManager();
 
             $guitar->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
 
-            $this->addFlash('success', 'Le model `{$guitar->getModel()}` a bien été modifiée');
+            $this->addFlash('success', "Le model {$guitar->getBrand()} {$guitar->getModel()} a bien été modifiée");
+
             // $guitarRepository->add($guitar);
-            return $this->redirectToRoute('back_office_collection_brows', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('back_office_collection_browse', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back_office/collection/edit.html.twig', [
