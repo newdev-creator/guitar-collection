@@ -1,33 +1,46 @@
 {{ form_start(form) }}
-    <div class="container">
-        <div class="color-danger">{{ form_errors(form) }}</div>
 
-        <div class="row">
-            <div class="col-md-6">
-            {{ form_row(form.model) }}
-            {{ form_row(form.acquisitionAt) }}
-            {{ form_row(form.finition) }}
-            {{ form_row(form.neckMaterial) }}
-            {{ form_row(form.bodyForm) }}
-            {{ form_row(form.nbFrets) }}
-            {{ form_row(form.image) }}
-            {{ form_row(form.brand) }}
+    <div class="color-danger">{{ form_errors(form) }}</div>
+
+
+    <div class="row gy-5">
+        <div class="col-6">
+            <div class="p-3 border bg-light">
+                {{ form_row(form.brand) }}
+                {{ form_row(form.model) }}
+                {{ form_row(form.year) }}
+                {{ form_row(form.image) }}
+                {{ form_row(form.finition) }}
+                {{ form_row(form.wear) }}
+                {{ form_row(form.user) }}
             </div>
         </div>
-        
-            <div class="col-md-6">
-            {{ form_row(form.year) }}
-            {{ form_row(form.wear) }}
-            {{ form_row(form.pickups) }}
-            {{ form_row(form.bodyMaterial) }}
-            {{ form_row(form.dominationHand) }}
-            {{ form_row(form.fixation) }}
-            {{ form_row(form.createdAt) }}
-            {{ form_row(form.user) }}
-            {{ form_row(form.updatedAt) }}
-            
+        <div class="col-6">
+            <div class="p-3 border bg-light">
+                {{ form_row(form.acquisitionAt) }}
+                {{ form_row(form.createdAt) }}
+                {{ form_row(form.updatedAt) }}
+            </div>
         </div>
-        {{ form_widget(form) }}
-        <button class="btn">{{ button_label|default('Save') }}</button>
+        <div class="col-6">
+            <div class="p-3 border bg-light">
+                {{ form_row(form.neckMaterial) }}
+                {{ form_row(form.nbFrets) }}
+                {{ form_row(form.dominationHand) }}
+                {{ form_row(form.fixation) }}
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="p-3 border bg-light">
+                {{ form_row(form.bodyForm) }}
+                {{ form_row(form.bodyMaterial) }}
+                {{ form_row(form.pickups) }}
+            </div>
+        </div>
     </div>
+    {{ form_widget(form) }}
+    <div class="d-grid col-6 mx-auto mt-5">
+  <button class="btn btn-warning">{{ button_label|default('Enregistrer le nouvel élément') }}</button>
+</div>
+    
 {{ form_end(form) }}
