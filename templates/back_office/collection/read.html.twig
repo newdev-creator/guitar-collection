@@ -3,80 +3,49 @@
 {% block title %}Guitar{% endblock %}
 
 {% block body %}
-    <h1>Guitar</h1>
+<main>
+<div class="container overflow-hidden mb-5">
+    <h1 class="mb-5">{{ brand.name }} {{ guitar.model }}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ guitar.id }}</td>
-            </tr>
-            <tr>
-                <th>Model</th>
-                <td>{{ guitar.model }}</td>
-            </tr>
-            <tr>
-                <th>Year</th>
-                <td>{{ guitar.year }}</td>
-            </tr>
-            <tr>
-                <th>AcquisitionAt</th>
-                <td>{{ guitar.acquisitionAt ? guitar.acquisitionAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Wear</th>
-                <td>{{ guitar.wear }}</td>
-            </tr>
-            <tr>
-                <th>Finition</th>
-                <td>{{ guitar.finition }}</td>
-            </tr>
-            <tr>
-                <th>Pickups</th>
-                <td>{{ guitar.pickups }}</td>
-            </tr>
-            <tr>
-                <th>NeckMaterial</th>
-                <td>{{ guitar.neckMaterial }}</td>
-            </tr>
-            <tr>
-                <th>BodyMaterial</th>
-                <td>{{ guitar.bodyMaterial }}</td>
-            </tr>
-            <tr>
-                <th>BodyForm</th>
-                <td>{{ guitar.bodyForm }}</td>
-            </tr>
-            <tr>
-                <th>DominationHand</th>
-                <td>{{ guitar.dominationHand ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>NbFrets</th>
-                <td>{{ guitar.nbFrets }}</td>
-            </tr>
-            <tr>
-                <th>Fixation</th>
-                <td>{{ guitar.fixation ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ guitar.image }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ guitar.createdAt ? guitar.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ guitar.updatedAt ? guitar.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-md-6">
+            <img class="collection-image" src="{{ asset("images/" ~ guitar.image) }}"
+                alt="{{ brand.name }} {{ guitar.model }}">
+        </div>
+
+        <div class="col-md-6">
+            <div class="p-3 border bg-light">
+                <h2>Caratéristiques</h2>
+                <p>Etat: {{ guitar.wear }}</p>
+                <p>Finition: {{ guitar.finition }}</p>
+                <p>Micros: {{ guitar.pickups }}</p>
+                <p>Manche: {{ guitar.neckMaterial }}</p>
+                <p>Gaucher/Droitier:
+                    {% if guitar.dominationHand == true %}
+                    Droitier
+                    {% else %}
+                    Gaucher
+                    {% endif %}
+                </p>
+                <p>Nombre de frettes: {{ guitar.nbFrets }}</p>
+                <p>Fixation du manche:
+                    {% if guitar.fixation == true %}
+                    Collé
+                    {% else %}
+                    Vissé
+                    {% endif %}</p>
+                <p>Corps: {{ guitar.bodyMaterial }}</p>
+                <p>Forme: {{ guitar.bodyForm }}</p>
+
+            </div>
+        </div>
+    </div>
+
 
     <a href="{{ path('back_office_collection_browse') }}">back to list</a>
 
     <a href="{{ path('back_office_collection_edit', {'id': guitar.id}) }}">edit</a>
 
     {{ include('back_office/collection/_delete_form.html.twig') }}
-{% endblock %}
+    </main>
+    {% endblock %}

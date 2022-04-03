@@ -41,6 +41,9 @@ class CollectionController extends AbstractController
      */
     public function read(Guitar $guitar): Response
     {
+        // get brand name
+        $brand = $guitar->getBrand();
+
         $collectionForm = $this->createForm(GuitarType::class, $guitar, [
             'disabled' => 'disabled',
         ]);
@@ -55,6 +58,7 @@ class CollectionController extends AbstractController
 
         return $this->render('back_office/collection/read.html.twig', [
             'guitar' => $guitar,
+            'brand' => $brand,
         ]);
     }
 
