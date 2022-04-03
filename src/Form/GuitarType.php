@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Guitar;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -58,8 +59,14 @@ class GuitarType extends AbstractType
                     'Vissé' => '2',
                 ],
             ])
-            ->add('image', null, [
-                'label' => 'Image',
+            ->add('image', FileType::class, [
+                'label' => 'Photo de votre instrument',
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'accept' => 'image/*',
+                ],
+
             ])
             ->add('createdAt', null, [
                 'label' => 'Date d\'enregistrement de l\'instrument',

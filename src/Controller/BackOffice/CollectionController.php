@@ -9,9 +9,11 @@ use App\Repository\GuitarRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route("/backOffice/collection", name="back_office_collection")
@@ -59,7 +61,7 @@ class CollectionController extends AbstractController
     /**
      * @Route("/edit/{id}", name="_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
-    public function edit(Request $request, Guitar $guitar, GuitarRepository $guitarRepository, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Guitar $guitar, GuitarRepository $guitarRepository, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(GuitarType::class, $guitar);
         $form->handleRequest($request);
@@ -67,6 +69,24 @@ class CollectionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // getDoctrine deprecated
             // $entityManager = $this->getDoctrine()->getManager();
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                $guitar->setImage($newFilename);
+            }
 
             $guitar->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();

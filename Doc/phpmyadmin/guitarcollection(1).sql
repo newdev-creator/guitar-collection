@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 01 avr. 2022 à 16:00
+-- Généré le : dim. 03 avr. 2022 à 13:17
 -- Version du serveur : 5.7.33
 -- Version de PHP : 7.4.19
 
@@ -43,7 +43,8 @@ INSERT INTO `brand` (`id`, `name`, `image`, `created_at`, `updated_at`) VALUES
 (1, 'Lag', 'https://tse1.mm.bing.net/th?id=OIP.LYaS0JmPfKFGMWylzRW3-AHaC3&pid=Api', '2022-03-30 07:22:42', '2022-03-30 07:22:42'),
 (2, 'Fender', 'https://tse1.mm.bing.net/th?id=OIP.6P0ZCOAwVPc8VyIzi_vQyQHaE4&pid=Api', '2022-03-30 07:22:42', '2022-03-30 07:22:42'),
 (3, 'Gretsch', 'https://tse3.mm.bing.net/th?id=OIP.K706bL6gMPc_3rqF3f44mgHaBf&pid=Api', '2022-03-31 08:17:11', '2022-03-31 08:17:11'),
-(4, 'Charvel', 'https://tse2.mm.bing.net/th?id=OIP.MCUY0khIF4aKzlWN-rzppgHaHa&pid=Api', '2022-03-31 10:00:29', '2022-03-31 10:00:29');
+(4, 'Charvel', 'https://tse2.mm.bing.net/th?id=OIP.MCUY0khIF4aKzlWN-rzppgHaHa&pid=Api', '2022-03-31 10:00:29', '2022-03-31 10:00:29'),
+(5, 'Gibson', 'https://tse1.mm.bing.net/th?id=OIP.rCpn_s8QzWWRydBzQbK4twHaEp&pid=Api', '2022-04-03 12:59:10', '2022-04-03 12:59:10');
 
 -- --------------------------------------------------------
 
@@ -120,11 +121,12 @@ CREATE TABLE `guitar` (
 --
 
 INSERT INTO `guitar` (`id`, `user_id`, `model`, `year`, `acquisition_at`, `wear`, `finition`, `pickups`, `neck_material`, `body_material`, `body_form`, `domination_hand`, `nb_frets`, `fixation`, `image`, `created_at`, `updated_at`, `brand_id`) VALUES
-(1, 1, 'Roxanne', 2001, '2017-05-03 01:01:00', 'played', 'Red', 'HH', 'Mahogany', 'Mahogany', 'SG', 1, 22, 1, 'https://tse2.mm.bing.net/th?id=OIP.ZIscvIEAc9h4FJErktsYYwHaJ4&pid=Api', '2017-03-03 12:01:00', '2022-04-01 14:35:39', 1),
-(2, 2, 'Deluxe', 2008, '2018-10-26 14:41:00', 'Nice', 'aged white', 'SSS', NULL, NULL, 'Stratocaster', 1, 22, 0, 'https://tse3.mm.bing.net/th?id=OIP.1L5PEco5K2AfQ97KwTuFbQHaE5&pid=Api', '2022-03-30 08:52:00', '2022-03-31 12:19:11', 2),
-(4, 2, 'G6229TG Limited Edition Players Edition Sparkle Jet™ BT with Bigsby® and Gold Hardware', 2022, '2022-03-05 00:00:00', 'Splendid', 'Champagne Sparkle', 'Broad\'Tron™ BT-65 x 2', 'Mahogany', 'Mahogany', 'Jet™', 1, 22, 1, 'https://www.fmicassets.com/Damroot/xLg/10002/2403410816_gre_ins_frt_01_rr.png', '2017-01-01 00:00:00', '2017-01-01 00:00:00', 3),
-(5, 1, 'Limited Edition Super Stock SC1', 2020, '2021-03-03 06:10:00', 'clean', 'Black Relic', 'EVH Wolfgang Humbucking Bridge & Seymour Duncan Li’l Screamin’ Demon Strat SLSD-1N Neck Pickups', 'Maple', 'Alder', 'Stratocaster', 0, 22, 0, 'https://www.fmicassets.com/Damroot/Original/10001/highlight_char_2966835503_overview.jpg', '2017-01-01 00:00:00', '2017-01-01 00:00:00', 4),
-(7, 3, 'George Harrison Telecaster', 1972, '2017-06-05 03:01:00', 'Aged', 'Satin Urethane', 'Pure Vintage \'64 Gray-Bottom Single-Coil Tele® x 2', 'Rosewood', 'Chambered Rosewood', 'Telecaster', 1, 22, 0, 'https://tse4.mm.bing.net/th?id=OIP.AjM525KLvx_qUy2kPjmxuwHaJ_&pid=Api', '2017-01-01 00:00:00', '2017-01-01 00:00:00', 2);
+(1, 1, 'Roxanne', 2001, '2017-05-03 01:01:00', 'played', 'Red', 'HH', 'Mahogany', 'Mahogany', 'SG', 1, 22, 1, 'roxanne-62499dba95565.jpg', '2017-03-03 12:01:00', '2022-04-03 13:14:34', 1),
+(2, 2, 'Deluxe', 2008, '2018-10-26 14:41:00', 'Nice', 'aged white', 'SSS', NULL, NULL, 'Stratocaster', 1, 22, 1, 'srtatocaster-62499dc7dab8b.jpg', '2022-03-30 08:52:00', '2022-04-03 13:14:47', 2),
+(4, 2, 'G6229TG Limited Edition Players Edition Sparkle Jet™ BT with Bigsby® and Gold Hardware', 2022, '2022-03-05 00:00:00', 'Splendid', 'Champagne Sparkle', 'Broad\'Tron™ BT-65 x 2', 'Mahogany', 'Mahogany', 'Jet™', 1, 22, 1, 'gretsch-62499dd9c9a5f.png', '2017-01-01 00:00:00', '2022-04-03 13:15:05', 3),
+(5, 1, 'Limited Edition Super Stock SC1', 2020, '2021-03-03 06:10:00', 'clean', 'Black Relic', 'EVH Wolfgang Humbucking Bridge & Seymour Duncan Li’l Screamin’ Demon Strat SLSD-1N Neck Pickups', 'Maple', 'Alder', 'Stratocaster', 1, 22, 1, 'charvel-62499de41e5f3.jpg', '2017-01-01 00:00:00', '2022-04-03 13:15:16', 4),
+(7, 3, 'George Harrison Telecaster', 1972, '2017-06-05 03:01:00', 'Aged', 'Satin Urethane', 'Pure Vintage \'64 Gray-Bottom Single-Coil Tele® x 2', 'Rosewood', 'Chambered Rosewood', 'Telecaster', 1, 22, 1, 'th-62499dd09b029.jpg', '2017-01-01 00:00:00', '2022-04-03 13:14:56', 2),
+(8, 1, 'Custom', 1970, '2018-01-05 00:01:00', 'Mint', 'Black Beauty', 'HH Gibson', 'Acajou', 'Acajou', 'Les Paul', 1, 22, 1, 'Gibson-Custom-Shop-1957-Les-Paul-Custom-Reissue-VOS-Electric-Guitar-Ebony-15112-1600x1600-62499b5f15997.webp', '2021-02-03 12:13:00', '2022-04-03 13:04:31', 5);
 
 -- --------------------------------------------------------
 
@@ -249,7 +251,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `category`
@@ -261,7 +263,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT pour la table `guitar`
 --
 ALTER TABLE `guitar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `post`
