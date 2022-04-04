@@ -3,7 +3,6 @@
 {% block title %}Guitar{% endblock %}
 
 {% block body %}
-<main>
 <div class="container overflow-hidden mb-5">
     <h1 class="mb-5">{{ brand.name }} {{ guitar.model }}</h1>
 
@@ -41,11 +40,20 @@
         </div>
     </div>
 
+<a class="btn btn-info form-btn" title="Retour à la liste" alt="Bouton retour"
+    href="{{ path('back_office_collection_browse') }}">Retour à la liste</a>
 
-    <a href="{{ path('back_office_collection_browse') }}">back to list</a>
+<a class="btn btn-success form-btn" title="Modifier" alt="Bouton modifier"
+    href="{{ path('back_office_collection_edit', {'id': guitar.id}) }}">Modifier</a>
 
-    <a href="{{ path('back_office_collection_edit', {'id': guitar.id}) }}">edit</a>
+<form method="post" action="{{ path('back_office_collection_delete', {'id': guitar.id}) }}"
+    onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ guitar.id) }}">
+    <button class="btn btn-danger form-btn" title="Supprimer" alt="Bouton Supprimer">
+        Supprimer l'élément
+    </button>
+</form>
+</div>
 
-    {{ include('back_office/collection/_delete_form.html.twig') }}
-    </main>
-    {% endblock %}
+
+{% endblock %}
