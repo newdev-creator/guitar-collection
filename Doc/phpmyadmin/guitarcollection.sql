@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : dim. 03 avr. 2022 à 13:17
+-- Généré le : lun. 04 avr. 2022 à 14:44
 -- Version du serveur : 5.7.33
 -- Version de PHP : 7.4.19
 
@@ -187,9 +187,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `image`, `roles`, `password`, `create_at`, `update_at`) VALUES
-(1, 'Lomahn', 'Stern', 'stern@stern.com', NULL, '1', 'stern', '2022-03-30 08:12:31', '2022-03-30 08:12:31'),
-(2, 'Céline', 'Pool', 'pool@pool.com', 'https://cdn.pixabay.com/photo/2015/09/17/14/24/woman-944261__340.jpg', '2', 'pool', '2022-03-30 08:49:13', '2022-03-30 08:49:13'),
-(3, 'George', 'Harrison', 'harrison@harrison.com', NULL, '2', 'harrison', '2022-03-31 10:07:30', '2022-03-31 10:07:30');
+(1, 'Lomahn', 'Stern', 'stern@stern.com', NULL, '[\"ROLE_USER\", \"ROLE_ADMIN\"]', '$2y$13$bg2jZr3aisLw/E3feM7S4OxbNG1yUmk5emfr5onnbWuo5kSD1tHqi', '2022-03-30 08:12:31', '2022-03-30 08:12:31'),
+(2, 'Céline', 'Pool', 'pool@pool.com', 'https://cdn.pixabay.com/photo/2015/09/17/14/24/woman-944261__340.jpg', '[\"ROLE_USER\"]', '$2y$13$6a2j/IWGzhIyQKErtjTeAO75/LvQnyReJdcNNB294tUscPrClijcG', '2022-03-30 08:49:13', '2022-03-30 08:49:13'),
+(3, 'George', 'Harrison', 'harrison@harrison.com', NULL, '[\"ROLE_USER\"]', '$2y$13$QreK6CBsF1thJ7tphCmJfeswwJLP/DMd.IsKI4MAI5S0F1fsEYZNm', '2022-03-31 10:07:30', '2022-03-31 10:07:30');
 
 --
 -- Index pour les tables déchargées

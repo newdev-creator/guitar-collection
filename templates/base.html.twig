@@ -43,10 +43,21 @@
                                 <li class="nav-slide-line">
                                         <a href="">Contact</a>
                                 </li>
+
+                                {% if app.user %}
                                 <li>
-                                        <button type="button" class="nav-btn">Se connecter</button>
+                                        <button type="button" class="nav-btn"><a href="{{ path("app_logout") }}">Se
+                                                        déconnecter</a></button>
                                 </li>
+                                {% else %}
+                                <li>
+                                        <button type="button" class="nav-btn"><a href="{{ path("app_login") }}">Se
+                                                        connecter</a></button>
+                                </li>
+                                
+                                {% endif %}
                         </ul>
+
                         <div class="nav-burger ">
                                 <div class="line1"></div>
                                 <div class="line2"></div>
