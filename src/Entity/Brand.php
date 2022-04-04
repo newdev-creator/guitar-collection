@@ -44,6 +44,11 @@ class Brand
      */
     private $guitars;
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     public function __construct()
     {
         $this->guitars = new ArrayCollection();

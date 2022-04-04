@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Guitar{% endblock %}
+
+{% block body %}
+<div class="container overflow-hidden mb-5">
+    <h1 class="mb-5">Enregistrer un nouvel instrument</h1>
+
+    {{ include('back_office/collection/_form.html.twig') }}
+
+    <a class="btn btn-info form-btn" title="Retour à la liste" alt="Bouton retour" href="{{ path('back_office_collection_browse') }}">Retour à la liste</a>
+</div>
+{% endblock %}

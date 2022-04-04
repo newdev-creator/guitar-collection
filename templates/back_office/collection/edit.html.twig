@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Guitar{% endblock %}
+
+{% block body %}
+<div class="container overflow-hidden mb-5">
+    <h1 class="mb-5">Modification des données de l'instrument</h1>
+
+    {{ include('back_office/collection/_form.html.twig', {'button_label': '+ Enregistrer les modifications'}) }}
+
+    <a class="btn btn-info form-btn" title="Retour à la liste" alt="Bouton retour" href="{{ path('back_office_collection_browse') }}">Retour à la liste</a>
+    <form method="post" action="{{ path('back_office_collection_delete', {'id': guitar.id}) }}"
+    onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ guitar.id) }}">
+    <button class="btn btn-danger form-btn" title="Supprimer" alt="Bouton Supprimer">
+        Supprimer l'élément
+    </button>
+</form>
+
+</div>
+{% endblock %}

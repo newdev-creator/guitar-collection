@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 29 mars 2022 à 13:29
+-- Généré le : dim. 03 avr. 2022 à 13:17
 -- Version du serveur : 5.7.33
 -- Version de PHP : 7.4.19
 
@@ -40,8 +40,11 @@ CREATE TABLE `brand` (
 --
 
 INSERT INTO `brand` (`id`, `name`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Lag', 'https://tse1.mm.bing.net/th?id=OIP.LYaS0JmPfKFGMWylzRW3-AHaC3&pid=Api', '2022-03-29 11:20:08', '2022-03-29 11:20:08'),
-(2, 'Fender', 'https://tse1.mm.bing.net/th?id=OIP.6P0ZCOAwVPc8VyIzi_vQyQHaE4&pid=Api', '2022-03-29 11:20:08', '2022-03-29 11:20:08');
+(1, 'Lag', 'https://tse1.mm.bing.net/th?id=OIP.LYaS0JmPfKFGMWylzRW3-AHaC3&pid=Api', '2022-03-30 07:22:42', '2022-03-30 07:22:42'),
+(2, 'Fender', 'https://tse1.mm.bing.net/th?id=OIP.6P0ZCOAwVPc8VyIzi_vQyQHaE4&pid=Api', '2022-03-30 07:22:42', '2022-03-30 07:22:42'),
+(3, 'Gretsch', 'https://tse3.mm.bing.net/th?id=OIP.K706bL6gMPc_3rqF3f44mgHaBf&pid=Api', '2022-03-31 08:17:11', '2022-03-31 08:17:11'),
+(4, 'Charvel', 'https://tse2.mm.bing.net/th?id=OIP.MCUY0khIF4aKzlWN-rzppgHaHa&pid=Api', '2022-03-31 10:00:29', '2022-03-31 10:00:29'),
+(5, 'Gibson', 'https://tse1.mm.bing.net/th?id=OIP.rCpn_s8QzWWRydBzQbK4twHaEp&pid=Api', '2022-04-03 12:59:10', '2022-04-03 12:59:10');
 
 -- --------------------------------------------------------
 
@@ -80,10 +83,11 @@ CREATE TABLE `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20220329093110', '2022-03-29 09:31:32', 55),
-('DoctrineMigrations\\Version20220329093312', '2022-03-29 09:33:16', 114),
-('DoctrineMigrations\\Version20220329094840', '2022-03-29 09:48:44', 230),
-('DoctrineMigrations\\Version20220329095036', '2022-03-29 09:50:41', 185);
+('DoctrineMigrations\\Version20220329093110', '2022-03-30 07:21:11', 59),
+('DoctrineMigrations\\Version20220329093312', '2022-03-30 07:21:11', 117),
+('DoctrineMigrations\\Version20220329094840', '2022-03-30 07:21:11', 267),
+('DoctrineMigrations\\Version20220329095036', '2022-03-30 07:21:12', 141),
+('DoctrineMigrations\\Version20220330071428', '2022-03-30 07:21:12', 69);
 
 -- --------------------------------------------------------
 
@@ -117,9 +121,12 @@ CREATE TABLE `guitar` (
 --
 
 INSERT INTO `guitar` (`id`, `user_id`, `model`, `year`, `acquisition_at`, `wear`, `finition`, `pickups`, `neck_material`, `body_material`, `body_form`, `domination_hand`, `nb_frets`, `fixation`, `image`, `created_at`, `updated_at`, `brand_id`) VALUES
-(1, 1, 'Roxanne', 2001, '2022-03-02 13:20:57', 'played', 'Red', 'HH', 'Mahogany', 'Mahogany', 'SG', 1, 22, 1, 'https://tse2.mm.bing.net/th?id=OIP.ZIscvIEAc9h4FJErktsYYwHaJ4&pid=Api', '2022-03-29 11:20:57', '2022-03-29 11:20:57', 1),
-(2, 2, 'American Vintage 62\' Custom', 2018, '2018-03-15 13:20:57', 'New', 'Sunburn', 'SS', NULL, NULL, 'Telcaster', 1, 21, 2, 'https://tse1.mm.bing.net/th?id=OIP.JAuuw9sm56z0i0qvp3PYzQHaFj&pid=Api', '2022-03-29 11:20:57', '2022-03-29 11:20:57', 2),
-(3, 1, 'Deluxe', 2008, '2010-10-26 14:41:23', 'Nice', 'aged white', 'SSS', NULL, NULL, 'Stratocaster', 1, 22, 2, 'https://tse3.mm.bing.net/th?id=OIP.1L5PEco5K2AfQ97KwTuFbQHaE5&pid=Api', '2022-03-29 12:41:23', '2022-03-29 12:41:23', 2);
+(1, 1, 'Roxanne', 2001, '2017-05-03 01:01:00', 'played', 'Red', 'HH', 'Mahogany', 'Mahogany', 'SG', 1, 22, 1, 'roxanne-62499dba95565.jpg', '2017-03-03 12:01:00', '2022-04-03 13:14:34', 1),
+(2, 2, 'Deluxe', 2008, '2018-10-26 14:41:00', 'Nice', 'aged white', 'SSS', NULL, NULL, 'Stratocaster', 1, 22, 1, 'srtatocaster-62499dc7dab8b.jpg', '2022-03-30 08:52:00', '2022-04-03 13:14:47', 2),
+(4, 2, 'G6229TG Limited Edition Players Edition Sparkle Jet™ BT with Bigsby® and Gold Hardware', 2022, '2022-03-05 00:00:00', 'Splendid', 'Champagne Sparkle', 'Broad\'Tron™ BT-65 x 2', 'Mahogany', 'Mahogany', 'Jet™', 1, 22, 1, 'gretsch-62499dd9c9a5f.png', '2017-01-01 00:00:00', '2022-04-03 13:15:05', 3),
+(5, 1, 'Limited Edition Super Stock SC1', 2020, '2021-03-03 06:10:00', 'clean', 'Black Relic', 'EVH Wolfgang Humbucking Bridge & Seymour Duncan Li’l Screamin’ Demon Strat SLSD-1N Neck Pickups', 'Maple', 'Alder', 'Stratocaster', 1, 22, 1, 'charvel-62499de41e5f3.jpg', '2017-01-01 00:00:00', '2022-04-03 13:15:16', 4),
+(7, 3, 'George Harrison Telecaster', 1972, '2017-06-05 03:01:00', 'Aged', 'Satin Urethane', 'Pure Vintage \'64 Gray-Bottom Single-Coil Tele® x 2', 'Rosewood', 'Chambered Rosewood', 'Telecaster', 1, 22, 1, 'th-62499dd09b029.jpg', '2017-01-01 00:00:00', '2022-04-03 13:14:56', 2),
+(8, 1, 'Custom', 1970, '2018-01-05 00:01:00', 'Mint', 'Black Beauty', 'HH Gibson', 'Acajou', 'Acajou', 'Les Paul', 1, 22, 1, 'Gibson-Custom-Shop-1957-Les-Paul-Custom-Reissue-VOS-Electric-Guitar-Ebony-15112-1600x1600-62499b5f15997.webp', '2021-02-03 12:13:00', '2022-04-03 13:04:31', 5);
 
 -- --------------------------------------------------------
 
@@ -154,9 +161,8 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `title`, `presentation`, `synopsis`, `image`, `created_at`, `updated_at`, `category_id`) VALUES
-(1, 'CHASE BLISS HABIT: IS THIS A NEW DELAY FROM THE EXPERIMENTAL PEDAL BUILDERS?', 'The brand is due to announce later this week its first new pedals since 2020.', 'On Sunday (27 March), users of The Gear Page forum flocked to a thread  “New Chase Bliss pedal…Habit Echo Collector” to discuss the allegedly upcoming pedal.\r\n\r\nThe image (above) shared by user DelayLover in the thread they started pictured a pedal with a yellow enclosure emblazoned with the moniker, Habit, and equipped with six knobs, four switches and two footswitches.\r\n\r\n“My thought is it’ll be some sort of digital experimental delay pedal,” speculated one user. “Maybe granular, pitch shift, little bit of ‘count to 5’, little bit of Red Panda stuff. Could be wrong but it’s making me feel this way.”\r\n\r\nA listing, now taken down, from US instrument retailer American Music appeared to reveal that the pedal will be an “Experimental Delay W/Memory” priced at $399.99. However, the page did not appear to provide any visuals relating to the one shared in the Gear Page post.', 'https://guitar.com/wp-content/uploads/2022/03/Chase-Bliss-Habit-Gear-Page@2000x1500-696x522.jpg', '2022-03-29 09:59:21', '2022-03-29 09:59:21', 1),
-(2, 'THE ROLLING STONES’ LEGENDARY 1977 SECRET SHOWS AT THE EL MOCAMBO TO SEE FIRST-EVER OFFICIAL RELEASE', 'The recordings were taken in a tiny Toronto venue.', 'In 1977, fans appeared at the 300-capacity El Mocambo venue in Toronto, Canada, expecting to see April Wine supported by a band called The Cockroaches. In reality, April WIne were supporting, and The Cockroaches were actually The Rolling Stones. The band’s two nights at the venue are now set to be officially released for the first time in May.\r\n\r\nREAD MORE: Keith Richards confirms Rolling Stones are writing with drummer Steve Jordan: “We came up with eight or nine new pieces of material”\r\nThe setlists for the two nights spanned a range of the band’s catalogue, and some blues covers such as Little Red Rooster, Mannish Boy and Worried Life Blues. They touched on some hits, including Jumpin’ Jack Flash and Brown Sugar, as well as Hot Stuff, Hand Of Fate and Melody taken from their newly-released LP Black And Blue.\r\n\r\nAhead of the official release of the live album, the band have released two tracks: Rip This Joint and It’s Only Rock N’ Roll (But I Like It). Check them out below.', 'https://guitar.com/wp-content/uploads/2022/03/the-rolling-stones@2000x1500-696x522.jpg', '2022-03-29 09:59:21', '2022-03-29 09:59:21', 1),
-(3, 'PLINI UNVEILS TWO NEW-AND-UPDATED SIGNATURE GUITARS WITH STRANDBERG: THE PROG NX 6 AND NECK-THRU BLACK', 'The prog guitarist teams up with the company once more to reconstruct his signature designs and launch his third and fourth models for the brand.', 'Australian guitar virtuoso Plini has recently re-teamed up with Strandberg to debut the new, overhauled version of his two flagship models: the Boden Plini Edition and the Neck-Thru Natural.\r\n\r\nREAD MORE: Gibson Revives A Lost Ted McCarty Design From the 1950s With The Theodore\r\nRedesigning and upgrading the spec sheet of the original designs, the Boden Prog NX 6 and Neck-Thru Black boast an all-new look for the signature designs, yet maintain the vital aspects that made the originals quite so highly acclaimed.\r\n\r\nFirst looking at the Boden Prog NX 6, the remake of the initial Boden Plini Edition, the upgraded spec redesigns the original blueprint to showcase a new body, neck and fretboard materials and incorporates the newly-debuted Plini humbuckers.\r\n\r\nNow upgrading the initial swamp ash body with a chambered mahogany alternative and redesigning the neck as mahogany rather than the original roasted maple, the new launch overhauls the first edition as a new, lighter-weight alternative.', 'https://guitar.com/wp-content/uploads/2022/03/Plini-Signature-Strandberg-Boden-Models@JPEG-696x392.jpeg', '2022-03-29 12:53:18', '2022-03-29 12:53:18', 1);
+(1, 'CHASE BLISS HABIT: IS THIS A NEW DELAY FROM THE EXPERIMENTAL PEDAL BUILDERS?', 'The brand is due to announce later this week its first new pedals since 2020.', 'On Sunday (27 March), users of The Gear Page forum flocked to a thread  “New Chase Bliss pedal…Habit Echo Collector” to discuss the allegedly upcoming pedal.\\r\\n\\r\\nThe image (above) shared by user DelayLover in the thread they started pictured a pedal with a yellow enclosure emblazoned with the moniker, Habit, and equipped with six knobs, four switches and two footswitches.\\r\\n\\r\\n“My thought is it’ll be some sort of digital experimental delay pedal,” speculated one user. “Maybe granular, pitch shift, little bit of ‘count to 5’, little bit of Red Panda stuff. Could be wrong but it’s making me feel this way.”\\r\\n\\r\\nA listing, now taken down, from US instrument retailer American Music appeared to reveal that the pedal will be an “Experimental Delay W/Memory” priced at $399.99. However, the page did not appear to provide any visuals relating to the one shared in the Gear Page post.', 'https://guitar.com/wp-content/uploads/2022/03/Chase-Bliss-Habit-Gear-Page@2000x1500-696x522.jpg', '2022-03-30 08:54:18', '2022-03-30 08:54:18', 1),
+(2, 'THE ROLLING STONES’ LEGENDARY 1977 SECRET SHOWS AT THE EL MOCAMBO TO SEE FIRST-EVER OFFICIAL RELEASE', 'The recordings were taken in a tiny Toronto venue.', 'In 1977, fans appeared at the 300-capacity El Mocambo venue in Toronto, Canada, expecting to see April Wine supported by a band called The Cockroaches. In reality, April WIne were supporting, and The Cockroaches were actually The Rolling Stones. The band’s two nights at the venue are now set to be officially released for the first time in May.\\r\\n\\r\\nREAD MORE: Keith Richards confirms Rolling Stones are writing with drummer Steve Jordan: “We came up with eight or nine new pieces of material”\\r\\nThe setlists for the two nights spanned a range of the band’s catalogue, and some blues covers such as Little Red Rooster, Mannish Boy and Worried Life Blues. They touched on some hits, including Jumpin’ Jack Flash and Brown Sugar, as well as Hot Stuff, Hand Of Fate and Melody taken from their newly-released LP Black And Blue.\\r\\n\\r\\nAhead of the official release of the live album, the band have released two tracks: Rip This Joint and It’s Only Rock N’ Roll (But I Like It). Check them out below.', 'https://guitar.com/wp-content/uploads/2022/03/the-rolling-stones@2000x1500-696x522.jpg', '2022-03-30 08:54:18', '2022-03-30 08:54:18', 1);
 
 -- --------------------------------------------------------
 
@@ -168,19 +174,22 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
-  `updated_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)'
+  `roles` json NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `create_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
+  `update_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'Lomahn', 'Stern', 'stern@stern', 'https://cdn.pixabay.com/photo/2015/08/16/12/36/man-890877__340.jpg', '2022-03-29 11:17:09', '2022-03-29 11:17:09'),
-(2, 'Céline', 'Pool', 'pool@pool.com', 'https://cdn.pixabay.com/photo/2015/09/17/14/24/woman-944261__340.jpg', '2022-03-29 11:17:09', '2022-03-29 11:17:09');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `image`, `roles`, `password`, `create_at`, `update_at`) VALUES
+(1, 'Lomahn', 'Stern', 'stern@stern.com', NULL, '1', 'stern', '2022-03-30 08:12:31', '2022-03-30 08:12:31'),
+(2, 'Céline', 'Pool', 'pool@pool.com', 'https://cdn.pixabay.com/photo/2015/09/17/14/24/woman-944261__340.jpg', '2', 'pool', '2022-03-30 08:49:13', '2022-03-30 08:49:13'),
+(3, 'George', 'Harrison', 'harrison@harrison.com', NULL, '2', 'harrison', '2022-03-31 10:07:30', '2022-03-31 10:07:30');
 
 --
 -- Index pour les tables déchargées
@@ -231,7 +240,8 @@ ALTER TABLE `post`
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -241,7 +251,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `category`
@@ -253,19 +263,19 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT pour la table `guitar`
 --
 ALTER TABLE `guitar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Contraintes pour les tables déchargées

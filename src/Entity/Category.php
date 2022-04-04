@@ -39,6 +39,11 @@ class Category
      */
     private $guitars;
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     public function __construct()
     {
         $this->post = new ArrayCollection();

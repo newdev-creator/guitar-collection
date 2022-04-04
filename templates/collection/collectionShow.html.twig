@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CollectionController!{% endblock %}
+
+{% block body %}
+<main>
+  <h1 class="text-center collection-title">{{ brand.name }} {{ collection_show.model }}</h1>
+  <div class="container pb-5 font-family">
+    <p>
+      <p><a class="link-dark" href="{{ path("home_Page") }}">Accueil</a>
+        >
+        <a class="link-dark" href="{{ path("collection_page") }}">Collection </a>
+        >
+        <a class="link-dark" href="{{ path("brand_show", {"id": brand.id}) }}">{{ brand.name }} </a>
+        >
+        {{ brand.name }} {{ collection_show.model }}
+      </p>
+
+      <div class="row">
+        <div class="col-md-6">
+          <img class="collection-image" src="{{ asset("images/" ~ collection_show.image) }}"
+            alt="{{ brand.name }} {{ collection_show.model }}">
+        </div>
+
+        <div class="col-md-6">
+          <div class="p-3 border bg-light">
+            <h2>Caratéristiques</h2>
+            <p>Etat: {{ collection_show.wear }}</p>
+            <p>Finition: {{ collection_show.finition }}</p>
+            <p>Micros: {{ collection_show.pickups }}</p>
+            <p>Manche: {{ collection_show.neckMaterial }}</p>
+            <p>Gaucher/Droitier:
+              {% if collection_show.dominationHand == true %}
+              Droitier
+              {% else %}
+              Gaucher
+              {% endif %}
+            </p>
+            <p>Nombre de frettes: {{ collection_show.nbFrets }}</p>
+            <p>Fixation du manche:
+              {% if collection_show.fixation == true %}
+              Collé
+              {% else %}
+              Vissé
+              {% endif %}</p>
+            <p>Corps: {{ collection_show.bodyMaterial }}</p>
+            <p>Forme: {{ collection_show.bodyForm }}</p>
+            <p>Appartient à : {{ user.firstName }} {{ user.lastName }}</p>
+          </div>
+        </div>
+
+
+      </div>
+  </div>
+</main>
+{% endblock %}

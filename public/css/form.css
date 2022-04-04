@@ -1,0 +1,15 @@
+.table-fixed {
+  width: 100%;
+}
+
+tbody{
+  height:200px;
+  overflow-y:auto;
+  width: 100%;
+  }
+
+  .form-btn {
+    width: calc(100% / 2);
+    margin-left: 25%;
+    margin-top: 1rem;
+  }
