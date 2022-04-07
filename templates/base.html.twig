@@ -28,25 +28,49 @@
                                 </a>
                         </div>
                         <ul class="nav-links">
-                                <li class="nav-slide-line">
+                                <li class="nav-li nav-slide-line">
                                         <a class="slide-line" href="{{ path("home_Page") }}">Accueil</a>
                                 </li>
-                                <li class="nav-slide-line">
+                                <li class="nav-li nav-slide-line">
                                         <a href="">A propos</a>
                                 </li>
-                                <li class="nav-slide-line">
+                                <li class="nav-li nav-slide-line">
                                         <a href="{{ path("post_page") }}">Posts</a>
                                 </li>
-                                <li class="nav-slide-line">
+                                <li class="nav-li nav-slide-line">
                                         <a href="{{ path("collection_page") }}">Collection</a>
                                 </li>
-                                <li class="nav-slide-line">
+                                <li class="nav-li nav-slide-line">
                                         <a href="">Contact</a>
                                 </li>
-                                <li>
-                                        <button type="button" class="nav-btn">Se connecter</button>
+
+                                {% if app.user %}
+                                <li class="nav-li">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                        </svg>
+                                        <span class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                {{ app.user.firstName }} {{ app.user.lastName }}
+                                        </span>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                <li><a class="dropdown-item" href="{{ path("back_office_collection_browse") }}">Instruments</a></li>
+                                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item" href="{{ path("app_logout") }}">Se déconnecter</a></li>
+                                        </ul>
+                                        </div>
+                                        
                                 </li>
+                                {% else %}
+                                <li>   
+                                        <a class="btn btn-outline-warning border rounded-pill" style="Margin-top: -0.2rem" href="{{ path("app_login") }}">Se
+                                                        connecter</a>
+                                </li>
+                                
+                                {% endif %}
                         </ul>
+
                         <div class="nav-burger ">
                                 <div class="line1"></div>
                                 <div class="line2"></div>
