@@ -25,7 +25,7 @@ class CollectionController extends AbstractController
      */
     public function browse(GuitarRepository $guitarRepository, BrandRepository $brandRepository): Response
     {
-
+        
         $brands = $brandRepository->findAll();
         $allGuitars = $guitarRepository->findAll();
         
@@ -41,6 +41,8 @@ class CollectionController extends AbstractController
      */
     public function read(Guitar $guitar): Response
     {
+        $this->denyAccessUnlessGranted('GUITAR_VIEW', $guitar);
+
         // get brand name
         $brand = $guitar->getBrand();
 
@@ -67,6 +69,8 @@ class CollectionController extends AbstractController
      */
     public function edit(Request $request, Guitar $guitar, GuitarRepository $guitarRepository, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
+        $this->denyAccessUnlessGranted('GUITAR_EDIT', $guitar);
+
         $form = $this->createForm(GuitarType::class, $guitar);
         $form->handleRequest($request);
 
@@ -112,6 +116,8 @@ class CollectionController extends AbstractController
      */
     public function add(Request $request, GuitarRepository $guitarRepository): Response
     {
+        $this->denyAccessUnlessGranted('GUITAR_ADD');
+
         $guitar = new Guitar();
         $form = $this->createForm(GuitarType::class, $guitar);
         $form->handleRequest($request);
@@ -132,6 +138,7 @@ class CollectionController extends AbstractController
      */
     public function delete(Request $request, Guitar $guitar, GuitarRepository $guitarRepository): Response
     {
+        $this->denyAccessUnlessGranted('GUITAR_DELETE', $guitar);
         if ($this->isCsrfTokenValid('delete'.$guitar->getId(), $request->request->get('_token'))) {
             $guitarRepository->remove($guitar);
         }
