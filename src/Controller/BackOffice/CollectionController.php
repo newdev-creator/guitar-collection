@@ -99,7 +99,7 @@ class CollectionController extends AbstractController
             $guitar->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
 
-            $this->addFlash('success', "Le model {$guitar->getBrand()} {$guitar->getModel()} a bien été modifiée");
+            $this->addFlash('success', "Le model {$guitar->getBrand()} {$guitar->getModel()} à bien été modifiée");
 
             // $guitarRepository->add($guitar);
             return $this->redirectToRoute('back_office_collection_browse', [], Response::HTTP_SEE_OTHER);
@@ -138,6 +138,7 @@ class CollectionController extends AbstractController
     public function delete(Request $request, Guitar $guitar, GuitarRepository $guitarRepository): Response
     {
         $this->denyAccessUnlessGranted('GUITAR_DELETE', $guitar);
+        
         if ($this->isCsrfTokenValid('delete'.$guitar->getId(), $request->request->get('_token'))) {
             $guitarRepository->remove($guitar);
         }
