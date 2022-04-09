@@ -3,9 +3,11 @@
 {% block title %}New User{% endblock %}
 
 {% block body %}
-    <h1>Create new User</h1>
+    <div class="container overflow-hidden mb-5">
+    <h1 class="mb-5">Enregistrer un nouvel utilisateur</h1>
 
     {{ include('back_office/user/_form.html.twig') }}
 
-    <a href="{{ path('app_back_office_user_index') }}">back to list</a>
+    <a class="btn btn-info form-btn" title="Retour à la liste" alt="Bouton retour" href="{{ path('back_office_user_browse') }}">Retour à la liste</a>
+</div>
 {% endblock %}

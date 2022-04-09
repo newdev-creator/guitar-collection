@@ -6,11 +6,16 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use DateTimeImmutable;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route("/backOffice/user", name="back_office_user")
@@ -53,7 +58,7 @@ class UserController extends AbstractController
     /**
      * @Route("/edit/{id}", name="_edit", methods={"GET", "POST"}, requirements={"id"="\d+"})
      */
-    public function edit(Request $request, User $user, UserRepository $userRepository, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
+    public function edit(Request $request, User $user, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
 
         // $this->denyAccessUnlessGranted('USER_EDIT', $user);
@@ -99,15 +104,29 @@ class UserController extends AbstractController
     /**
      * @Route("/add", name="_add", methods={"GET", "POST"})
      */
-    public function new(Request $request, UserRepository $userRepository): Response
+    public function new(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $userRepository->add($user);
-            return $this->redirectToRoute('app_back_office_user_index', [], Response::HTTP_SEE_OTHER);
+            $entityManager->persist($user);
+
+            $clearPassword = $request->request->get('user')['password']['first'];
+
+            if (! empty($clearPassword)) 
+            {
+                $hashedPassword = $passwordHasher->hashPassword($user, $clearPassword);
+                $user->setPassword($hashedPassword);
+            }
+
+            $entityManager->flush();
+
+            $this->addFlash('success', "L'utilisateur à bien été ajouté");
+
+            // $userRepository->add($user);
+            return $this->redirectToRoute('back_office_user_browse', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back_office/user/add.html.twig', [
@@ -121,7 +140,7 @@ class UserController extends AbstractController
      */
     public function delete(Request $request, User $user, UserRepository $userRepository): Response
     {
-        // $this->denyAccessUnlessGranted('GUITAR_DELETE', $guitar);
+        // $this->denyAccessUnlessGranted('USER_DELETE', $guitar);
 
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $userRepository->remove($user);
