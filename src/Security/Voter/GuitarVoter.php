@@ -14,8 +14,7 @@ class GuitarVoter extends Voter
     public const EDIT = 'GUITAR_EDIT';
     public const VIEW = 'GUITAR_VIEW';
     public const DELETE = 'GUITAR_DELETE';
-    public const CREATE = 'GUITAR_CREATE';
-    public const BROWSE = 'GUITAR_BROWSE';
+    
 
     private $security;
 
@@ -64,14 +63,6 @@ class GuitarVoter extends Voter
                 // logic to determine if the user can DELETE
                 return $this->canDelete($guitar, $user);
                 break;
-            case self::CREATE:
-                // logic to determine if the user can CREATE
-                return $this->canCreate($guitar, $user);
-                break;
-            case self::BROWSE:
-                // logic to determine if the user can BROWSE
-                return $this->canBrowse($guitar, $user);
-                break;
         }
 
         return false;
@@ -92,13 +83,7 @@ class GuitarVoter extends Voter
         return $user === $guitar->getUser();
     }
 
-    private function canCreate(Guitar $guitar, User $user): bool
-    {
-        return $user === $guitar->getUser();
-    }
+    
 
-    private function canBrowse(Guitar $guitar, User $user): bool
-    {
-        return $user === $guitar->getUser();
-    }
+    
 }

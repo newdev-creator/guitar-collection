@@ -116,7 +116,6 @@ class CollectionController extends AbstractController
      */
     public function add(Request $request, GuitarRepository $guitarRepository): Response
     {
-        $this->denyAccessUnlessGranted('GUITAR_ADD');
 
         $guitar = new Guitar();
         $form = $this->createForm(GuitarType::class, $guitar);
