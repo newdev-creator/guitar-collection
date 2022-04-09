@@ -95,7 +95,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $userRepository->save($user);
+            $userRepository->add($user);
             $this->addFlash('success', "L'utilisateur à bien été ajouté");
 
             return $this->redirectToRoute('back_office_user_browse', [], Response::HTTP_SEE_OTHER);

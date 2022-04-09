@@ -6,7 +6,16 @@
 <div class="container overflow-hidden mb-5">
     <h1 class="mb-5">Enregistrer un nouvel utilisateur</h1>
 
-    {# {{ include('back_office/user/_form.html.twig') }} #}
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.password) }}
+    {{ form_row(form.image) }}
+    <button type="submit" class="btn btn-primary mt-4">Enregistrer</button>
+    {{ form_end(form) }}
+
 
     <a class="btn btn-info form-btn" title="Retour à la liste" alt="Bouton retour" href="{{ path('back_office_user_browse') }}">Retour à la liste</a>
 </div>

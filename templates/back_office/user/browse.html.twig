@@ -4,41 +4,68 @@
 
   
   {% block body %}
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1>Liste des utilisateurs</h1>
-      </div>
+
+<div class="container font-family">
+    {{ include('_partials/_flash_messages.html.twig') }}
+    
+    <div class="d-flex justify-content-between mt-5">
+    <h1>Liste des utilisateurs</h1>
+    <a href="{{ path('back_office_user_add') }}" class="btn btn-warning">+ Ajouter un nouvel utilisateur</a>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <table class="table table-striped">
-          <thead>
+    
+    
+    
+    <div class="table-responsive">
+    <table class="table table-striped table-fixed text-center">
+        <thead>
             <tr>
-              <th>Id</th>
-              <th>Nom</th>
-              <th>Prénom</th>
-              <th>Email</th>
-              <th>Actions</th>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Email</th>
+                <th scope="col">Date d'inscription</th>
+                <th scope="col">actions</th>
             </tr>
-          </thead>
-          <tbody>
-            {% for user in users %}
+        </thead>
+
+        {% for user in users %}
+            <tbody>
             <tr>
-              <td>{{ user.id }}</td>
-              <td>{{ user.firstName }}</td>
-              <td>{{ user.lastName }}</td>
-              <td>{{ user.email }}</td>
-              <td>
-                <a href="{{ path('back_office_user_read', {'id': user.id}) }}" class="btn btn-default">Voir</a>
-                <a href="{{ path('back_office_user_edit', {'id': user.id}) }}" class="btn btn-default">Modifier</a>
-              </td>
+                <th scope="row">{{ user.id }}</th>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.createAt ? user.createAt|date('d-m-Y') : '' }}</td>
+                <td>
+                    <div class="d-flex">
+                    <a class="btn btn-success" href="{{ path('back_office_user_read', {"id": user.id}) }}"
+                        title="Plus de détails" alt="Bouton voir plus">
+                        {# images récupérées sur bootstrap icons https://icons.getbootstrap.com/ #}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </a>
+                    <a class="btn btn-primary mx-1" href="{{ path('back_office_user_edit', {"id": user.id}) }}"
+                        title="Modifier" alt="Bouton modifier">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-pencil" viewBox="0 0 16 16">
+                            <path
+                                d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                        </svg>
+                    </a>
+                    {{ include('back_office/user/_delete_form.html.twig') }}
+                    </div>
+                </td>
             </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        <a href="{{ path('back_office_user_add') }}" class="btn btn-default">Ajouter un utilisateur</a>
-      </div>
+            
+        </tbody>
+        {% endfor %}
+            
+         
+       
+    </table>
     </div>
-  </div>
-  {% endblock %}
+</div>
+{% endblock %}
