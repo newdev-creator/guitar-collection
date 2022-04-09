@@ -37,7 +37,7 @@ class CollectionController extends AbstractController
     }
 
     /**
-     * @Route("/read/{id}", name="_read", methods={"GET"}, requirements={"id"="\d+"})
+     * @Route("/read/{id}", name="_read", methods={"GET"})
      */
     public function read(Guitar $guitar): Response
     {
@@ -99,7 +99,7 @@ class CollectionController extends AbstractController
             $guitar->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
 
-            $this->addFlash('success', "Le model {$guitar->getBrand()} {$guitar->getModel()} a bien été modifiée");
+            $this->addFlash('success', "Le model {$guitar->getBrand()} {$guitar->getModel()} à bien été modifiée");
 
             // $guitarRepository->add($guitar);
             return $this->redirectToRoute('back_office_collection_browse', [], Response::HTTP_SEE_OTHER);
