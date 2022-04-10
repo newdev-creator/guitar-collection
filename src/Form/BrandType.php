@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Brand;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,8 +16,14 @@ class BrandType extends AbstractType
             ->add('name', null, [
                 'label' => 'Nom',
             ])
-            ->add('image', null, [
-                'label' => 'Image',
+            ->add('image', FileType::class, [
+                'label' => 'Logo de la marque',
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'accept' => 'image/*',
+                ],
+
             ])
         ;
     }
