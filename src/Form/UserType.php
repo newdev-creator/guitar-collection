@@ -51,8 +51,7 @@ class UserType extends AbstractType
             ->add('lastName', null, [
                 'label' => 'Nom',
             ])
-            ->add('createAt')
-            ->add('updateAt')
+            
         ;
     }
 

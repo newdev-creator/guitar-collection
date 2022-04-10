@@ -68,12 +68,7 @@ class GuitarType extends AbstractType
                 ],
 
             ])
-            ->add('createdAt', null, [
-                'label' => 'Date d\'enregistrement de l\'instrument',
-            ])
-            ->add('updatedAt', null, [
-                'label' => 'Date de modification de l\'instrument',
-            ])
+            
             ->add('user', null, [
                 'label' => 'Utilisateur',
             ])
