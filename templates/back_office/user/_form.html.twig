@@ -3,10 +3,14 @@
     {{ form_row(form.firstName) }}
     {{ form_row(form.lastName) }}
     {{ form_row(form.email) }}
-    {{ form_row(form.password) }}
+    {{ form_row(form.roles) }}
+    {{ form_row(form.password.first) }}
+    {{ form_row(form.password.second) }}
     {{ form_row(form.image) }}
+    <div class="form-none">
     {{ form_row(form.createAt) }}
     {{ form_row(form.updateAt) }}
+    </div>
     <div class="d-grid col-6 mx-auto mt-5">
   <button class="btn btn-warning title="Enregistrer" alt="Bouton Enregistrer"">{{ button_label|default('Enregistrer le nouvel élément') }}</button>
 </div>

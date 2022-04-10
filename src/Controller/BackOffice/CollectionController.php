@@ -114,7 +114,7 @@ class CollectionController extends AbstractController
     /**
      * @Route("/add", name="_add", methods={"GET", "POST"})
      */
-    public function add(Request $request, GuitarRepository $guitarRepository): Response
+    public function add(Request $request, GuitarRepository $guitarRepository, EntityManagerInterface $entityManager): Response
     {
 
         $guitar = new Guitar();
@@ -126,6 +126,9 @@ class CollectionController extends AbstractController
             return $this->redirectToRoute('back_office_collection_browse', [], Response::HTTP_SEE_OTHER);
         }
 
+        $entityManager->flush();
+        $this->addFlash('success', "La guitare a été créée");
+
         return $this->renderForm('back_office/collection/add.html.twig', [
             'guitar' => $guitar,
             'form' => $form,
@@ -135,13 +138,16 @@ class CollectionController extends AbstractController
     /**
      * @Route("delete/{id}", name="_delete", methods={"POST"}, requirements={"id"="\d+"})
      */
-    public function delete(Request $request, Guitar $guitar, GuitarRepository $guitarRepository): Response
+    public function delete(Request $request, Guitar $guitar, GuitarRepository $guitarRepository, EntityManagerInterface $entityManager): Response
     {
         $this->denyAccessUnlessGranted('GUITAR_DELETE', $guitar);
         
         if ($this->isCsrfTokenValid('delete'.$guitar->getId(), $request->request->get('_token'))) {
             $guitarRepository->remove($guitar);
         }
+
+        $entityManager->flush();
+        $this->addFlash('success', "La guitare a été supprimée");
 
         return $this->redirectToRoute('back_office_collection_browse', [], Response::HTTP_SEE_OTHER);
     }

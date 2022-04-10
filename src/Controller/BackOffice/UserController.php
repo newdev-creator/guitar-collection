@@ -44,10 +44,10 @@ class UserController extends AbstractController
         ]);
 
         $userForm
-            ->add('createdAt', null, [
+            ->add('createAt', null, [
                 'widget' => 'single_text',
             ])
-            ->add('updatedAt', null, [
+            ->add('updateAt', null, [
                 'widget' => 'single_text',
             ]);
         return $this->render('back_office/user/read.html.twig', [
@@ -92,7 +92,7 @@ class UserController extends AbstractController
             $this->addFlash('success', "L'utilisateur à bien été modifiée");
 
             // $userRepository->add($user);
-            return $this->redirectToRoute('app_back_office_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('back_office_user_browse', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back_office/user/edit.html.twig', [
@@ -104,7 +104,7 @@ class UserController extends AbstractController
     /**
      * @Route("/add", name="_add", methods={"GET", "POST"})
      */
-    public function new(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
+    public function add(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -138,7 +138,7 @@ class UserController extends AbstractController
     /**
      * @Route("delete/{id}", name="_delete", methods={"POST"}, requirements={"id"="\d+"})
      */
-    public function delete(Request $request, User $user, UserRepository $userRepository): Response
+    public function delete(Request $request, User $user, UserRepository $userRepository, EntityManagerInterface $entityManager): Response
     {
         // $this->denyAccessUnlessGranted('USER_DELETE', $guitar);
 
@@ -146,6 +146,8 @@ class UserController extends AbstractController
             $userRepository->remove($user);
         }
 
-        return $this->redirectToRoute('app_back_office_user_index', [], Response::HTTP_SEE_OTHER);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('back_office_user_browse', [], Response::HTTP_SEE_OTHER);
     }
 }

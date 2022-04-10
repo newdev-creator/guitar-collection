@@ -23,6 +23,8 @@
                 <th scope="col">Nom</th>
                 <th scope="col">Prénom</th>
                 <th scope="col">Email</th>
+                <th scope="col">Rôles</th>
+                <th scope="col">Image</th>
                 <th scope="col">Date d'inscription</th>
                 <th scope="col">actions</th>
             </tr>
@@ -35,6 +37,8 @@
                 <td>{{ user.firstName }}</td>
                 <td>{{ user.lastName }}</td>
                 <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : ''}}</td>
+                <td>{{ user.image }}</td>
                 <td>{{ user.createAt ? user.createAt|date('d-m-Y') : '' }}</td>
                 <td>
                     <div class="d-flex">
