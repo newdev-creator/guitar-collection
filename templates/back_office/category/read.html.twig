@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Marque{% endblock %}
+
+{% block body %}
+    <div class="container overflow-hidden mb-5">
+    <h1 class="mb-5">{{ category.name }}</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+        <img src="{{ asset("images/" ~ category.image) }}" alt="Logo {{ category.name }}">
+        </div>
+
+        <div class="col-md-6">
+        <div class="p-3 border bg-light">
+        <p>Marque: {{ category.name }}</p>
+        </div>
+        </div>
+    </div>
+
+     <a class="btn btn-info form-btn" title="Retour à la liste" alt="Bouton retour"
+    href="{{ path('back_office_category_browse') }}">Retour à la liste</a>
+
+<a class="btn btn-success form-btn" title="Modifier" alt="Bouton modifier"
+    href="{{ path('back_office_category_edit', {'id': category.id}) }}">Modifier</a>
+
+<form method="post" action="{{ path('back_office_category_delete', {'id': category.id}) }}"
+    onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ category.id) }}">
+    <button class="btn btn-danger form-btn" title="Supprimer" alt="Bouton Supprimer">
+        Supprimer l'élément
+    </button>
+</form>
+    </div>
+{% endblock %}

@@ -79,7 +79,7 @@ class BrandController extends AbstractController
             $this->addFlash('success', "La marque à bien été modifiée");
 
             // $brandRepository->add($brand);
-            return $this->redirectToRoute('app_back_office_brand_browse', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('back_office_brand_browse', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back_office/brand/edit.html.twig', [
@@ -125,6 +125,6 @@ class BrandController extends AbstractController
         $entityManager->flush();
         $this->addFlash('success', "La marque a été supprimée");
 
-        return $this->redirectToRoute('app_back_office_brand_browse', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('back_office_brand_browse', [], Response::HTTP_SEE_OTHER);
     }
 }
