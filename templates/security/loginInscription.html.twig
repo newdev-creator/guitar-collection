@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}
+    <div class="container overflow-hidden mb-5">
+    <h1 class="mb-5">Formulaire d'inscription</h1>
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+    {{ form_row(form.email) }}
+    {% if form.roles == true %}
+        {% do form.roles.setRendered() %}
+    {% endif %}
+    {{ form_row(form.password.first) }}
+    {{ form_row(form.password.second) }}
+    {{ form_row(form.image) }}
+    
+    
+    
+    <div class="d-grid col-6 mx-auto mt-5">
+  <button class="btn btn-warning title="Enregistrer" alt="Bouton Enregistrer"">{{ button_label|default('Enregistrer le nouvel élément') }}</button>
+</div>
+{{ form_end(form) }}
+
+    <a class="btn btn-info form-btn" title="Retour à la liste" alt="Bouton retour" href="{{ path('home_Page') }}">Accueil</a>
+</div>
+{% endblock %}

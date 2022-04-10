@@ -3,7 +3,7 @@
 }
 
 tbody{
-  height:200px;
+  height:100px;
   overflow-y:auto;
   width: 100%;
   }
@@ -12,6 +12,10 @@ tbody{
     width: calc(100% / 2);
     margin-left: 25%;
     margin-top: 1rem;
+  }
+
+  .form-none{
+    display: none;
   }
 
 /* ========================== */

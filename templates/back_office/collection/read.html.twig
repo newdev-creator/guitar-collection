@@ -35,6 +35,7 @@
                     {% endif %}</p>
                 <p>Corps: {{ guitar.bodyMaterial }}</p>
                 <p>Forme: {{ guitar.bodyForm }}</p>
+                <p>Date d'acquisition: {{ guitar.acquisitionAt ? guitar.acquisitionAt|date('d-m-Y') : ''  }}</p>
 
             </div>
         </div>
