@@ -1,21 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier une marque{% endblock %}
+{% block title %}Modifier un post{% endblock %}
 
 {% block body %}
 <div class="container overflow-hidden mb-5">
-    <h1 class="mb-5">Modification des données de la marque</h1>
+    <h1 class="mb-5">Modification des données du post</h1>
 
     {{ include('back_office/post/_form.html.twig', {'button_label': '+ Enregistrer les modifications'}) }}
 
-    <a class="btn btn-info form-btn" title="Retour à la liste" alt="Bouton retour" href="{{ path('back_office_post_browse') }}">Retour à la liste</a>
+    <a class="btn btn-info form-btn" title="Retour à la liste" alt="Bouton retour"
+        href="{{ path('back_office_post_browse') }}">Retour à la liste</a>
     <form method="post" action="{{ path('back_office_post_delete', {'id': post.id}) }}"
-    onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
-    <button class="btn btn-danger form-btn" title="Supprimer" alt="Bouton Supprimer">
-        Supprimer l'élément
-    </button>
-</form>
+        onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
+        <button class="btn btn-danger form-btn" title="Supprimer" alt="Bouton Supprimer">
+            Supprimer l'élément
+        </button>
+    </form>
 
 </div>
 {% endblock %}

@@ -30,6 +30,9 @@ class PostType extends AbstractType
                     'accept' => 'image/*',
                 ],
             ])
+            ->add('category', null, [
+                'label' => 'Catégorie',
+            ])
         ;
     }
 

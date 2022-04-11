@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouvelle marque{% endblock %}
+{% block title %}Nouveau post{% endblock %}
 
 {% block body %}
 <div class="container overflow-hidden mb-5">
-    <h1 class="mb-5">Enregistrer une nouvelle marque</h1>
+    <h1 class="mb-5">Enregistrer un nouveau post</h1>
 
     {{ include('back_office/post/_form.html.twig') }}
 
-    <a class="btn btn-info form-btn" title="Retour à la liste" alt="Bouton retour" href="{{ path('back_office_post_browse') }}">Retour à la liste</a>
+    <a class="btn btn-info form-btn" title="Retour à la liste" alt="Bouton retour"
+        href="{{ path('back_office_post_browse') }}">Retour à la liste</a>
 </div>
 {% endblock %}
