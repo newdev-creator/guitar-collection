@@ -20,7 +20,7 @@
           <div class="col-md-4">
           <a href="{{ path("post_show", {"id": post.id}) }}">
             <div class="card collection-card">
-              <img class="collection-image" src="{{ post.image }}" class="card-img-top" alt="{{ post.image }}">
+              <img class="collection-image" src="{{ asset("images/" ~ post.image) }}" class="card-img-top" alt="Picture {{ post.image }}">
           </a>
               <div class="card-body">
                 <h5 class="card-title">{{ post.title }}</h5>
