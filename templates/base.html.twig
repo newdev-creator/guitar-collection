@@ -54,16 +54,16 @@
                                                 {{ app.user.firstName }} {{ app.user.lastName }}
                                         </span>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <li><a class="dropdown-item" href="{{ path("back_office_collection_browse") }}">Instruments</a></li>
                                                 {% if is_granted("ROLE_ADMIN") %}
-                                                <li><a class="dropdown-item" href="{{ path("back_office_user_browse") }}">Utilisateurs</a></li>
+                                                <li><a class="dropdown-item" href="{{ path("back_office_collection_browse") }}">Liste des guitares</a></li>
+                                                <li><a class="dropdown-item" href="{{ path("back_office_brand_browse") }}">Liste des marques</a></li>
+                                                <li><a class="dropdown-item" href="{{ path("back_office_user_browse") }}">Liste des utilisateurs</a></li>
+                                                <li><a class="dropdown-item" href="{{ path("back_office_category_browse") }}">Liste des catégories</a></li>
+                                                <li><a class="dropdown-item" href="{{ path("back_office_post_browse") }}">Liste des posts</a></li>
+                                                <li><hr class="dropdown-divider"></li>
                                                 {% endif %}
-                                                
-                                                
-                                                
-
-
-                                                
+          
+                                                <li><a class="dropdown-item" href="{{ path("back_office_collection_browse") }}">Instruments</a></li>
                                                 <li><a class="dropdown-item" href="#">Profile</a></li>
                                                 <li><hr class="dropdown-divider"></li>
                                                 <li><a class="dropdown-item" href="{{ path("app_logout") }}">Se déconnecter</a></li>
