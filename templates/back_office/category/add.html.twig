@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle marque{% endblock %}
+
+{% block body %}
+<div class="container overflow-hidden mb-5">
+    <h1 class="mb-5">Enregistrer une nouvelle marque</h1>
+
+    {{ include('back_office/category/_form.html.twig') }}
+
+    <a class="btn btn-info form-btn" title="Retour à la liste" alt="Bouton retour" href="{{ path('back_office_category_browse') }}">Retour à la liste</a>
+</div>
+{% endblock %}

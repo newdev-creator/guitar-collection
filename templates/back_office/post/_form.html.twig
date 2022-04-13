@@ -1,0 +1,10 @@
+{{ form_start(form) }}
+<div class="color-danger">{{ form_errors(form) }}</div>
+{{ form_row(form.title)}}
+{{ form_row(form.presentation) }}
+{{ form_row(form.category) }}
+{{ form_row(form.synopsis) }}
+{{ form_row(form.image) }}
+<div class="d-grid col-6 mx-auto mt-5">
+  <button class="btn btn-warning title=" Enregistrer" alt="Bouton Enregistrer"">{{ button_label|default('Enregistrer le nouvel élément') }}</button>
+</div>{{ form_end(form) }}

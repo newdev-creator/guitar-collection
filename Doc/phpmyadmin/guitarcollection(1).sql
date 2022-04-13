@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 04 avr. 2022 à 14:44
+-- Généré le : mer. 13 avr. 2022 à 14:16
 -- Version du serveur : 5.7.33
 -- Version de PHP : 7.4.19
 
@@ -121,12 +121,11 @@ CREATE TABLE `guitar` (
 --
 
 INSERT INTO `guitar` (`id`, `user_id`, `model`, `year`, `acquisition_at`, `wear`, `finition`, `pickups`, `neck_material`, `body_material`, `body_form`, `domination_hand`, `nb_frets`, `fixation`, `image`, `created_at`, `updated_at`, `brand_id`) VALUES
-(1, 1, 'Roxanne', 2001, '2017-05-03 01:01:00', 'played', 'Red', 'HH', 'Mahogany', 'Mahogany', 'SG', 1, 22, 1, 'roxanne-62499dba95565.jpg', '2017-03-03 12:01:00', '2022-04-03 13:14:34', 1),
+(1, 1, 'Roxanne', 2001, '2017-05-03 01:01:00', 'played', 'red', 'HH', 'Mahogany', 'Mahogany', 'SG', 1, 22, 1, 'roxanne-62499dba95565.jpg', '2017-03-03 12:01:00', '2022-04-09 14:15:40', 1),
 (2, 2, 'Deluxe', 2008, '2018-10-26 14:41:00', 'Nice', 'aged white', 'SSS', NULL, NULL, 'Stratocaster', 1, 22, 1, 'srtatocaster-62499dc7dab8b.jpg', '2022-03-30 08:52:00', '2022-04-03 13:14:47', 2),
 (4, 2, 'G6229TG Limited Edition Players Edition Sparkle Jet™ BT with Bigsby® and Gold Hardware', 2022, '2022-03-05 00:00:00', 'Splendid', 'Champagne Sparkle', 'Broad\'Tron™ BT-65 x 2', 'Mahogany', 'Mahogany', 'Jet™', 1, 22, 1, 'gretsch-62499dd9c9a5f.png', '2017-01-01 00:00:00', '2022-04-03 13:15:05', 3),
 (5, 1, 'Limited Edition Super Stock SC1', 2020, '2021-03-03 06:10:00', 'clean', 'Black Relic', 'EVH Wolfgang Humbucking Bridge & Seymour Duncan Li’l Screamin’ Demon Strat SLSD-1N Neck Pickups', 'Maple', 'Alder', 'Stratocaster', 1, 22, 1, 'charvel-62499de41e5f3.jpg', '2017-01-01 00:00:00', '2022-04-03 13:15:16', 4),
-(7, 3, 'George Harrison Telecaster', 1972, '2017-06-05 03:01:00', 'Aged', 'Satin Urethane', 'Pure Vintage \'64 Gray-Bottom Single-Coil Tele® x 2', 'Rosewood', 'Chambered Rosewood', 'Telecaster', 1, 22, 1, 'th-62499dd09b029.jpg', '2017-01-01 00:00:00', '2022-04-03 13:14:56', 2),
-(8, 1, 'Custom', 1970, '2018-01-05 00:01:00', 'Mint', 'Black Beauty', 'HH Gibson', 'Acajou', 'Acajou', 'Les Paul', 1, 22, 1, 'Gibson-Custom-Shop-1957-Les-Paul-Custom-Reissue-VOS-Electric-Guitar-Ebony-15112-1600x1600-62499b5f15997.webp', '2021-02-03 12:13:00', '2022-04-03 13:04:31', 5);
+(7, 3, 'George Harrison Telecaster', 1972, '2017-06-05 03:01:00', 'Aged', 'Satin Urethane', 'Pure Vintage \'64 Gray-Bottom Single-Coil Tele® x 2', 'Rosewood', 'Chambered Rosewood', 'Telecaster', 1, 22, 1, 'th-62499dd09b029.jpg', '2017-01-01 00:00:00', '2022-04-03 13:14:56', 2);
 
 -- --------------------------------------------------------
 
@@ -161,8 +160,8 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `title`, `presentation`, `synopsis`, `image`, `created_at`, `updated_at`, `category_id`) VALUES
-(1, 'CHASE BLISS HABIT: IS THIS A NEW DELAY FROM THE EXPERIMENTAL PEDAL BUILDERS?', 'The brand is due to announce later this week its first new pedals since 2020.', 'On Sunday (27 March), users of The Gear Page forum flocked to a thread  “New Chase Bliss pedal…Habit Echo Collector” to discuss the allegedly upcoming pedal.\\r\\n\\r\\nThe image (above) shared by user DelayLover in the thread they started pictured a pedal with a yellow enclosure emblazoned with the moniker, Habit, and equipped with six knobs, four switches and two footswitches.\\r\\n\\r\\n“My thought is it’ll be some sort of digital experimental delay pedal,” speculated one user. “Maybe granular, pitch shift, little bit of ‘count to 5’, little bit of Red Panda stuff. Could be wrong but it’s making me feel this way.”\\r\\n\\r\\nA listing, now taken down, from US instrument retailer American Music appeared to reveal that the pedal will be an “Experimental Delay W/Memory” priced at $399.99. However, the page did not appear to provide any visuals relating to the one shared in the Gear Page post.', 'https://guitar.com/wp-content/uploads/2022/03/Chase-Bliss-Habit-Gear-Page@2000x1500-696x522.jpg', '2022-03-30 08:54:18', '2022-03-30 08:54:18', 1),
-(2, 'THE ROLLING STONES’ LEGENDARY 1977 SECRET SHOWS AT THE EL MOCAMBO TO SEE FIRST-EVER OFFICIAL RELEASE', 'The recordings were taken in a tiny Toronto venue.', 'In 1977, fans appeared at the 300-capacity El Mocambo venue in Toronto, Canada, expecting to see April Wine supported by a band called The Cockroaches. In reality, April WIne were supporting, and The Cockroaches were actually The Rolling Stones. The band’s two nights at the venue are now set to be officially released for the first time in May.\\r\\n\\r\\nREAD MORE: Keith Richards confirms Rolling Stones are writing with drummer Steve Jordan: “We came up with eight or nine new pieces of material”\\r\\nThe setlists for the two nights spanned a range of the band’s catalogue, and some blues covers such as Little Red Rooster, Mannish Boy and Worried Life Blues. They touched on some hits, including Jumpin’ Jack Flash and Brown Sugar, as well as Hot Stuff, Hand Of Fate and Melody taken from their newly-released LP Black And Blue.\\r\\n\\r\\nAhead of the official release of the live album, the band have released two tracks: Rip This Joint and It’s Only Rock N’ Roll (But I Like It). Check them out below.', 'https://guitar.com/wp-content/uploads/2022/03/the-rolling-stones@2000x1500-696x522.jpg', '2022-03-30 08:54:18', '2022-03-30 08:54:18', 1);
+(1, 'CHASE BLISS HABIT: IS THIS A NEW DELAY FROM THE EXPERIMENTAL PEDAL BUILDERS?', 'The brand is due to announce later this week its first new pedals since 2020.', 'On Sunday (27 March), users of The Gear Page forum flocked to a thread  “New Chase Bliss pedal…Habit Echo Collector” to discuss the allegedly upcoming pedal.\\r\\n\\r\\nThe image (above) shared by user DelayLover in the thread they started pictured a pedal with a yellow enclosure emblazoned with the moniker, Habit, and equipped with six knobs, four switches and two footswitches.\\r\\n\\r\\n“My thought is it’ll be some sort of digital experimental delay pedal,” speculated one user. “Maybe granular, pitch shift, little bit of ‘count to 5’, little bit of Red Panda stuff. Could be wrong but it’s making me feel this way.”\\r\\n\\r\\nA listing, now taken down, from US instrument retailer American Music appeared to reveal that the pedal will be an “Experimental Delay W/Memory” priced at $399.99. However, the page did not appear to provide any visuals relating to the one shared in the Gear Page post.', 'Chase-Bliss-Habit-Gear-Page-at-2000x1500-696x522-625427606bbea.jpg', '2022-03-30 08:54:18', '2022-04-11 13:04:32', 1),
+(2, 'THE ROLLING STONES’ LEGENDARY 1977 SECRET SHOWS AT THE EL MOCAMBO TO SEE FIRST-EVER OFFICIAL RELEASE', 'The recordings were taken in a tiny Toronto venue.', 'In 1977, fans appeared at the 300-capacity El Mocambo venue in Toronto, Canada, expecting to see April Wine supported by a band called The Cockroaches. In reality, April WIne were supporting, and The Cockroaches were actually The Rolling Stones. The band’s two nights at the venue are now set to be officially released for the first time in May.\\r\\n\\r\\nREAD MORE: Keith Richards confirms Rolling Stones are writing with drummer Steve Jordan: “We came up with eight or nine new pieces of material”\\r\\nThe setlists for the two nights spanned a range of the band’s catalogue, and some blues covers such as Little Red Rooster, Mannish Boy and Worried Life Blues. They touched on some hits, including Jumpin’ Jack Flash and Brown Sugar, as well as Hot Stuff, Hand Of Fate and Melody taken from their newly-released LP Black And Blue.\\r\\n\\r\\nAhead of the official release of the live album, the band have released two tracks: Rip This Joint and It’s Only Rock N’ Roll (But I Like It). Check them out below.', 'the-rolling-stones-at-2000x1500-696x522-6254276ad1790.jpg', '2022-03-30 08:54:18', '2022-04-11 13:04:42', 1);
 
 -- --------------------------------------------------------
 
@@ -187,9 +186,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `image`, `roles`, `password`, `create_at`, `update_at`) VALUES
-(1, 'Lomahn', 'Stern', 'stern@stern.com', NULL, '[\"ROLE_USER\", \"ROLE_ADMIN\"]', '$2y$13$bg2jZr3aisLw/E3feM7S4OxbNG1yUmk5emfr5onnbWuo5kSD1tHqi', '2022-03-30 08:12:31', '2022-03-30 08:12:31'),
-(2, 'Céline', 'Pool', 'pool@pool.com', 'https://cdn.pixabay.com/photo/2015/09/17/14/24/woman-944261__340.jpg', '[\"ROLE_USER\"]', '$2y$13$6a2j/IWGzhIyQKErtjTeAO75/LvQnyReJdcNNB294tUscPrClijcG', '2022-03-30 08:49:13', '2022-03-30 08:49:13'),
-(3, 'George', 'Harrison', 'harrison@harrison.com', NULL, '[\"ROLE_USER\"]', '$2y$13$QreK6CBsF1thJ7tphCmJfeswwJLP/DMd.IsKI4MAI5S0F1fsEYZNm', '2022-03-31 10:07:30', '2022-03-31 10:07:30');
+(1, 'Lomahn', 'Stern', 'stern@stern.com', 'audience-g68c475fe4-640-6252798d5700b.jpg', '[\"ROLE_USER\", \"ROLE_ADMIN\"]', '$2y$13$bg2jZr3aisLw/E3feM7S4OxbNG1yUmk5emfr5onnbWuo5kSD1tHqi', '2022-03-30 08:12:00', '2022-04-10 06:30:37'),
+(2, 'Céline', 'Pool', 'pool@pool.com', 'woman-g00a5c59d0-640-625279ecb1a46.jpg', '[\"ROLE_USER\"]', '$2y$13$6a2j/IWGzhIyQKErtjTeAO75/LvQnyReJdcNNB294tUscPrClijcG', '2022-03-30 08:49:00', '2022-04-10 06:32:12'),
+(3, 'George', 'Harrison', 'harrison@harrison.com', NULL, '[\"ROLE_USER\"]', '$2y$13$QreK6CBsF1thJ7tphCmJfeswwJLP/DMd.IsKI4MAI5S0F1fsEYZNm', '2022-03-31 10:07:30', '2022-03-31 10:07:30'),
+(5, 'Neogeo', 'Fanatic', 'neo@neo.com', '81519017-440960410127093-6013783886117470208-n-62526c2c4f283.jpg', '[]', '$2y$13$TW6rA0p9oDZjWBSQ4rBMXeQD8PdkS0rHTL/2zKxP7qipwPoOqKFAq', '2017-01-01 00:00:00', '2022-04-10 05:33:32'),
+(7, 'Marc', 'Levi', 'levi@levi.com', NULL, '[]', '$2y$13$zgZ1Y0IIS1BjOTHCH6YqmunnfXFSVYbf/cc8Xt5Ym2C4IeOXizEQC', '2017-01-01 00:00:00', '2017-01-01 00:00:00'),
+(8, 'bob', 'bob', 'bob@bob.com', NULL, '[]', '$2y$13$ZmtthU0xSSqnN42Y6w8tOO0b1GA0uzZqpnZsT2xWOb8.FaAuk4OeS', '2017-01-01 00:00:00', '2017-01-01 00:00:00'),
+(9, 'Chad', 'Root', 'root@root.com', NULL, '[]', '$2y$13$xD/VeNN5B3GSQ8dPdXC/OuGmnuthq54DV6PSbuh8dMYs0gWdiPjly', '2022-04-10 07:19:18', '2022-04-10 07:19:18');
 
 --
 -- Index pour les tables déchargées
@@ -263,7 +266,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT pour la table `guitar`
 --
 ALTER TABLE `guitar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `post`
@@ -275,7 +278,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Contraintes pour les tables déchargées

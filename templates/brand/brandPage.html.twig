@@ -17,7 +17,7 @@
             <div class="col-md-3">
                 <div class="card collection-card">
                     <a href="{{ path("brand_show", {"id": brand.id}) }}">
-                        <img class="collection-image" src="{{ brand.image }}" alt="{{ brand.name }}">
+                        <img class="collection-image" src="{{ asset("images/" ~ brand.image) }}" alt="{{ brand.name }}">
                         <h2 class="text-center">{{ brand.name }}</h2>
                     </a>
                 </div>

@@ -15,7 +15,7 @@
 
 
 
-    <img class="mb-2 img-fluid" src="{{ brand_show.image }}" alt="{{ brand_show.name }} logo">
+    <img class="mb-2 img-fluid" src="{{ asset("images/" ~ brand_show.image) }}" alt="{{ brand_show.name }} logo">
 
     <h3>Trier par marques:</h3>
         {% for brand in all_brands %}
@@ -31,7 +31,7 @@
             <div class="col-md-3">
                 <div class="card collection-card">
                     <a href="{{ path("collection_show", {"id": guitar.id}) }}">
-                        <img class="collection-image" src="{{ guitar.image }}" alt="{{ guitar.model }} guitar">
+                        <img class="collection-image" src="{{ asset("images/" ~ guitar.image) }}" alt="{{ guitar.model }} guitar">
                         <h2 class="text-center">{{ guitar.model }}</h2>
                         <p class="text-center">{{ guitar.brand.name }}</p>
                     </a>
