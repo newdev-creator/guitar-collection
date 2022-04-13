@@ -31,6 +31,12 @@
   transform: translateY(-3px) scale(1.1);
 }
 
+@media screen and (max-width: 768px) {
+  .collection-title {
+    font-size: 4rem;
+  }
+}
+
 
 /* ======================================== */
 
