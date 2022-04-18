@@ -1,3 +1,5 @@
+<?php
+
 namespace App\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -10,7 +12,7 @@ class GuitarControllerTest extends WebTestCase
 
         $crawler = $client->request('GET', '/');
 
-        $this->asserReponseIsSuccessful();
+        $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Welcome to the Guitar Store!');
     }
 }
