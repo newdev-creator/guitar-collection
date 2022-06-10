@@ -38,7 +38,10 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/backOffice, roles: ROLE_ADMIN }
+        - { path: ^/backOffice/brand, roles: ROLE_ADMIN }
+        - { path: ^/backOffice/category, roles: ROLE_ADMIN }
+        - { path: ^/backOffice/post, roles: ROLE_ADMIN }
+        - { path: ^/backOffice/user, roles: ROLE_ADMIN }
         - { path: ^/backOffice/collection, roles: ROLE_USER }
 
 when@test:

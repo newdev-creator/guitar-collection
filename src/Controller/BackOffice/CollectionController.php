@@ -25,9 +25,10 @@ class CollectionController extends AbstractController
      */
     public function browse(GuitarRepository $guitarRepository, BrandRepository $brandRepository): Response
     {
-        
+        // if user is admin show all guitars, else find guitar by user
+        $allGuitars = $this->isGranted('ROLE_ADMIN') ? $guitarRepository->findAll() : $guitarRepository->findBy(['user' => $this->getUser()]);
+
         $brands = $brandRepository->findAll();
-        $allGuitars = $guitarRepository->findAll();
         
         // dd ($brands, $allGuitars);
         return $this->render('back_office/collection/browse.html.twig', [
