@@ -3,42 +3,43 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<main>
+    <main>
 
-  <h1 class="text-center collection-title">Posts</h1>
+        <h1 class="text-center collection-title">Posts</h1>
 
-  <div class="container font-family">
-    <p><a class="link-dark" href="{{ path("home_Page") }}">Accueil</a>
-      >
-      <a class="link-dark" href="{{ path("post_page") }}">Posts</a>
-      >
-    </p>
-    <section>
-      <div class="container">
-        <h3>Trier par categories:</h3>
-        {% for categorie in categories %}
-        <button type="button" class="btn btn-outline-primary mb-3"
-          onclick="location.href='{{ path("post_show_category", {"id": categorie.id}) }}'">
-          {{ categorie.name }}
-        </button>
-        {% endfor %}
-        <div class="row">
-          {% for post in post_page %}
-          <div class="col-md-4">
-            <a href="{{ path("post_show", {"id": post.id}) }}">
-              <div class="card collection-card">
-                <img src="{{ asset("images/" ~ post.image) }}" class="card-img-top" alt="Picture {{ post.image }}">
-            </a>
-            <div class="card-body">
-              <h5 class="card-title">{{ post.title }}</h5>
-              <p class="card-text">{{ post.presentation }}</p>
+        <div class="container font-family">
+            <p><a class="link-dark" href="{{ path("home_Page") }}">Accueil</a>
+                >
+                <a class="link-dark" href="{{ path("post_page") }}">Posts</a>
+                >
+            </p>
+            <section>
+                <div class="container">
+                    <h3>Trier par categories:</h3>
+                    {% for categorie in categories %}
+                        <button type="button" class="btn btn-outline-primary mb-3"
+                                onclick="location.href='{{ path("post_show_category", {"id": categorie.id}) }}'">
+                            {{ categorie.name }}
+                        </button>
+                    {% endfor %}
+                    <div class="row">
+                        {% for post in post_page %}
+                        <div class="col-md-4">
+                            <a href="{{ path("post_show", {"id": post.id}) }}">
+                                <div class="card collection-card">
+                                    <img src="{{ asset("images/" ~ post.image) }}" class="card-img-top"
+                                         alt="Picture {{ post.image }}">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ post.title }}</h5>
+                                <p class="card-text">{{ post.presentation }}</p>
 
-            </div>
-          </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
         </div>
-        {% endfor %}
-      </div>
-  </div>
-  </section>
-</main>
+        </section>
+    </main>
 {% endblock %}
