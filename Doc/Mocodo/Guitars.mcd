@@ -1,14 +1,11 @@
-User: firstName, lastName, email, createdAt, updatedAt
-possession, 1n Guitar, 11 User
-Aesthetic: wear, finition, pickups, model, neckMaterial, bodyMaterial, bodyForm
-:
+POST: title, presentation, synopsis, image, createdAt, updatedAt
+possession, 1N GUITAR, 11 USER
+USER: email, roles, password, image, firstName, lastName, createdAt, updatedAt
 
-has_brand, 01 Brand, 1n Guitar
-Guitar: name, year, acquisitioDate, dominationHand, nbString, fixation, createdAt, updatedAt
-has_guitar, 1n Guitar, 11 Aesthetic
-Post: title, synonpsis, createdAt, updatedAt
+link, 1N POST, 1N CATEGORY
+GUITAR: model, year, asquisitionAt, wear, finition, pickup, neckMaterial, bodyMaterial, bodyForm, dominationHand ,nbFrets, fixation, image, createdAt, updatedAt
+has_brand, 1N GUITAR, 01 BRAND
 
-Brand: name
-to, 0n Guitar, 1n Category
-Category: name
-link, 1n Category, 1n Post
+CATEGORY: name, image
+to, 1N CATEGORY, 0N GUITAR
+BRAND: name, image, createdAt, updatedAt
