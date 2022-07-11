@@ -3,42 +3,43 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<main>
+    <main>
 
-    <div class="container font-family">
-        <p><a class="link-dark" href="{{ path("home_Page") }}">Accueil</a>
-            >
-            <a class="link-dark" href="{{ path("brand_page") }}">Marques </a>
-            >
-            {{ brand_show.name }}
-        </p>
+        <div class="container font-family">
+            <p><a class="link-dark" href="{{ path("home_Page") }}">Accueil</a>
+                >
+                <a class="link-dark" href="{{ path("brand_page") }}">Marques </a>
+                >
+                {{ brand_show.name }}
+            </p>
 
 
+            <img class="mb-2 img-fluid" src="{{ asset("images/" ~ brand_show.image) }}"
+                 alt="{{ brand_show.name }} logo">
 
-    <img class="mb-2 img-fluid" src="{{ asset("images/" ~ brand_show.image) }}" alt="{{ brand_show.name }} logo">
-
-    <h3>Trier par marques:</h3>
-        {% for brand in all_brands %}
-        <button type="button" class="btn btn-outline-primary mb-3
+            <h3>Trier par marques:</h3>
+            {% for brand in all_brands %}
+                <button type="button" class="btn btn-outline-primary mb-3
         {% if brand.id == brand_show.id %} active {% endif %}"
-        onclick="location.href='{{ path("brand_show", {"id": brand.id}) }}'">
-          {{ brand.name }}
-        </button>
-        {% endfor %}
-
-        <div class="row">
-            {% for guitar in guitars %}
-            <div class="col-md-3">
-                <div class="card collection-card">
-                    <a href="{{ path("collection_show", {"id": guitar.id}) }}">
-                        <img class="collection-image" src="{{ asset("images/" ~ guitar.image) }}" alt="{{ guitar.model }} guitar">
-                        <h2 class="text-center">{{ guitar.model }}</h2>
-                        <p class="text-center">{{ guitar.brand.name }}</p>
-                    </a>
-                </div>
-            </div>
+                        onclick="location.href='{{ path("brand_show", {"id": brand.id}) }}'">
+                    {{ brand.name }}
+                </button>
             {% endfor %}
+
+            <div class="row">
+                {% for guitar in guitars %}
+                    <div class="col-md-3">
+                        <div class="card collection-card">
+                            <a href="{{ path("collection_show", {"id": guitar.id}) }}">
+                                <img class="collection-image" src="{{ asset("images/" ~ guitar.image) }}"
+                                     alt="{{ guitar.model }} guitar">
+                                <h2 class="text-center">{{ guitar.model }}</h2>
+                                <p class="text-center">{{ guitar.brand.name }}</p>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
-</main>
+    </main>
 {% endblock %}

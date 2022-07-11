@@ -3,27 +3,28 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<main>
-    <h1 class="text-center collection-title">Marques</h1>
+    <main>
+        <h1 class="text-center collection-title">Marques</h1>
 
-    <div class="container font-family">
-        <p><a class="link-dark" href="{{ path("home_Page") }}">Accueil</a>
-            >
-            <a class="link-dark" href="{{ path("brand_page") }}">Marques </a>
-            >
-        </p>
-        <div class="row">
-            {% for brand in brand_page %}
-            <div class="col-md-3">
-                <div class="card collection-card">
-                    <a href="{{ path("brand_show", {"id": brand.id}) }}">
-                        <img class="collection-image" src="{{ asset("images/" ~ brand.image) }}" alt="{{ brand.name }}">
-                        <h2 class="text-center">{{ brand.name }}</h2>
-                    </a>
-                </div>
+        <div class="container font-family">
+            <p><a class="link-dark" href="{{ path("home_Page") }}">Accueil</a>
+                >
+                <a class="link-dark" href="{{ path("brand_page") }}">Marques </a>
+                >
+            </p>
+            <div class="row">
+                {% for brand in brand_page %}
+                    <div class="col-md-3">
+                        <div class="card collection-card">
+                            <a href="{{ path("brand_show", {"id": brand.id}) }}">
+                                <img class="collection-image" src="{{ asset("images/" ~ brand.image) }}"
+                                     alt="{{ brand.name }}">
+                                <h2 class="text-center">{{ brand.name }}</h2>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
-    </div>
-</main>
+    </main>
 {% endblock %}

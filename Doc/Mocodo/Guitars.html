@@ -11,70 +11,72 @@
 <body>
 <div id='mld'>
 <div>
-  <span class='relation'>User</span> (
-    <span class='primary'>firstName</span>,
-    <span class='normal'>lastName</span>,
-    <span class='normal'>email</span>,
+  <span class='relation'>POST</span> (
+    <span class='primary'>title</span>,
+    <span class='normal'>presentation</span>,
+    <span class='normal'>synopsis</span>,
+    <span class='normal'>image</span>,
     <span class='normal'>createdAt</span>,
-    <span class='normal'>updatedAt</span>,
-    <span class='foreign'>name</span>
+    <span class='normal'>updatedAt</span>
   )
 </div>
 <div>
-  <span class='relation'>Aesthetic</span> (
-    <span class='primary'>wear</span>,
+  <span class='relation'>USER</span> (
+    <span class='primary'>email</span>,
+    <span class='normal'>roles</span>,
+    <span class='normal'>password</span>,
+    <span class='normal'>image</span>,
+    <span class='normal'>firstName</span>,
+    <span class='normal'>lastName</span>,
+    <span class='normal'>createdAt</span>,
+    <span class='normal'>updatedAt</span>,
+    <span class='foreign'>model</span>
+  )
+</div>
+<div>
+  <span class='relation'>link</span> (
+    <span class='foreign primary'>title</span>,
+    <span class='foreign primary'>name</span>
+  )
+</div>
+<div>
+  <span class='relation'>GUITAR</span> (
+    <span class='primary'>model</span>,
+    <span class='normal'>year</span>,
+    <span class='normal'>asquisitionAt</span>,
+    <span class='normal'>wear</span>,
     <span class='normal'>finition</span>,
-    <span class='normal'>pickups</span>,
-    <span class='normal'>model</span>,
+    <span class='normal'>pickup</span>,
     <span class='normal'>neckMaterial</span>,
     <span class='normal'>bodyMaterial</span>,
     <span class='normal'>bodyForm</span>,
-    <span class='foreign'>name</span>
-  )
-</div>
-<div>
-  <span class='relation'>Guitar</span> (
-    <span class='primary'>name</span>,
-    <span class='normal'>year</span>,
-    <span class='normal'>acquisitioDate</span>,
     <span class='normal'>dominationHand</span>,
-    <span class='normal'>nbString</span>,
+    <span class='normal'>nbFrets</span>,
     <span class='normal'>fixation</span>,
+    <span class='normal'>image</span>,
     <span class='normal'>createdAt</span>,
     <span class='normal'>updatedAt</span>
   )
 </div>
 <div>
-  <span class='relation'>Post</span> (
-    <span class='primary'>title</span>,
-    <span class='normal'>synonpsis</span>,
-    <span class='normal'>createdAt</span>,
-    <span class='normal'>updatedAt</span>
-  )
-</div>
-<div>
-  <span class='relation'>Brand</span> (
+  <span class='relation'>CATEGORY</span> (
     <span class='primary'>name</span>,
-    <span class='foreign'>name.1</span>
+    <span class='normal'>image</span>
   )
 </div>
 <div>
   <span class='relation'>to</span> (
     <span class='foreign primary'>name</span>,
-    <span class='foreign primary'>name.1</span>
+    <span class='foreign primary'>model</span>
   )
 </div>
-<!--
 <div>
-  <span class='relation'>Category</span> (
-    <span class='primary'>name</span>
-  )
-</div>
--->
-<div>
-  <span class='relation'>link</span> (
-    <span class='foreign primary'>name</span>,
-    <span class='foreign primary'>title</span>
+  <span class='relation'>BRAND</span> (
+    <span class='primary'>name</span>,
+    <span class='normal'>image</span>,
+    <span class='normal'>createdAt</span>,
+    <span class='normal'>updatedAt</span>,
+    <span class='foreign'>model</span>
   )
 </div>
 </div>
