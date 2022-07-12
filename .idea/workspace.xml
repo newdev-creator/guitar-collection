@@ -3,11 +3,43 @@
   <component name="ChangeListManager">
     <list default="true" id="2fa2759d-c3bb-4aef-b85f-ec912affd7f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ResetPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ChangePasswordFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ChangePasswordFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/brand/add.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/brand/add.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/brand/browse.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/brand/browse.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/brand/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/brand/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/brand/read.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/brand/read.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/category/add.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/category/add.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/category/browse.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/category/browse.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/category/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/category/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/category/read.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/category/read.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/collection/add.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/collection/add.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/collection/browse.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/collection/browse.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/collection/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/collection/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/collection/read.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/collection/read.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/post/add.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/post/add.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/post/browse.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/post/browse.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/post/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/post/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/post/read.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/post/read.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/user/add.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/user/add.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/user/browse.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/user/browse.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/user/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/user/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back_office/user/read.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back_office/user/read.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/brand/brandPage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/brand/brandPage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/brand/brandShow.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/brand/brandShow.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error404.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error404.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/collection/collectionPage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/collection/collectionPage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/collection/collectionShow.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/collection/collectionShow.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/homePage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/homePage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/post/post.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post/post.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/post/postShow.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post/postShow.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/post/postShowCategory.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/post/postShowCategory.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/reset_password/check_email.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reset_password/check_email.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reset_password/email.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reset_password/email.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/reset_password/request.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reset_password/request.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/reset_password/reset.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reset_password/reset.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/loginInscription.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/loginInscription.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +241,8 @@
       <workItem from="1657292534719" duration="1399000" />
       <workItem from="1657547827220" duration="610000" />
       <workItem from="1657548443060" duration="29000" />
-      <workItem from="1657548489492" duration="2477000" />
+      <workItem from="1657548489492" duration="5130000" />
+      <workItem from="1657631458335" duration="728000" />
     </task>
     <servers />
   </component>
