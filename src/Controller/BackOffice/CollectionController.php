@@ -115,7 +115,7 @@ class CollectionController extends AbstractController
     /**
      * @Route("/add", name="_add", methods={"GET", "POST"})
      */
-    public function add(Request $request, GuitarRepository $guitarRepository, EntityManagerInterface $entityManager): Response
+    public function add(Request $request, GuitarRepository $guitarRepository, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
 
         $guitar = new Guitar();
@@ -123,12 +123,37 @@ class CollectionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                $guitar->setImage($newFilename);
+            }
+
+            $entityManager->persist($guitar);
+            $guitar
+                ->setCreatedAt(new DateTimeImmutable())
+                ->setUpdatedAt(new DateTimeImmutable());
             $guitarRepository->add($guitar);
+            $entityManager->flush();
+            $this->addFlash('success', "La guitare a été créée");
+
             return $this->redirectToRoute('back_office_collection_browse', [], Response::HTTP_SEE_OTHER);
         }
 
-        $entityManager->flush();
-        $this->addFlash('success', "La guitare a été créée");
+
 
         return $this->renderForm('back_office/collection/add.html.twig', [
             'guitar' => $guitar,

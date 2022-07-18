@@ -45,7 +45,7 @@
                             {% endif %}</p>
                         <p>Corps: {{ collection_show.bodyMaterial }}</p>
                         <p>Forme: {{ collection_show.bodyForm }}</p>
-                        <p>Appartient à : {{ user.firstName }} {{ user.lastName }}</p>
+                        <p>Appartient à : {{ user.pseudo }}</p>
                         {% if is_granted("GUITAR_EDIT", collection_show) %}
                             <a href="{{ path("back_office_collection_read", {id: collection_show.id}) }}">modifier</a>
 

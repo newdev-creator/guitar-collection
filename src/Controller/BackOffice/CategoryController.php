@@ -97,12 +97,18 @@ class CategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($category);
+            $category
+                ->setCreatedAt(new DateTimeImmutable())
+                ->setUpdatedAt(new DateTimeImmutable());
             $categoryRepository->add($category);
+            $entityManager->flush();
+            $this->addFlash('success', "La categorie a été créée");
+
             return $this->redirectToRoute('back_office_category_browse', [], Response::HTTP_SEE_OTHER);
         }
 
-        $entityManager->flush();
-        $this->addFlash('success', "La categorie a été créée");
+
 
         return $this->renderForm('back_office/category/add.html.twig', [
             'category' => $category,

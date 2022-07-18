@@ -91,19 +91,44 @@ class PostController extends AbstractController
     /**
      * @Route("/add", name="_add", methods={"GET", "POST"})
      */
-    public function add(Request $request, PostRepository $postRepository, EntityManagerInterface $entityManager): Response
+    public function add(Request $request, PostRepository $postRepository, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $post = new Post();
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                $post->setImage($newFilename);
+            }
+
+            $entityManager->persist($post);
+            $post
+                ->setCreatedAt(new DateTimeImmutable())
+                ->setUpdatedAt(new DateTimeImmutable());
             $postRepository->add($post);
+            $entityManager->flush();
+            $this->addFlash('success', "Le post a été créée");
+
             return $this->redirectToRoute('back_office_post_browse', [], Response::HTTP_SEE_OTHER);
         }
 
-        $entityManager->flush();
-        $this->addFlash('success', "Le post a été créée");
+
 
         return $this->renderForm('back_office/post/add.html.twig', [
             'post' => $post,
