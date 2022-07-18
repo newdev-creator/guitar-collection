@@ -91,13 +91,32 @@ class BrandController extends AbstractController
     /**
      * @Route("/add", name="_add", methods={"GET", "POST"})
      */
-    public function add(Request $request, BrandRepository $brandRepository, EntityManagerInterface $entityManager): Response
+    public function add(Request $request, BrandRepository $brandRepository, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $brand = new Brand();
         $form = $this->createForm(BrandType::class, $brand);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                $brand->setImage($newFilename);
+            }
+
             $entityManager->persist($brand);
             $brand
                 ->setCreatedAt(new DateTimeImmutable())

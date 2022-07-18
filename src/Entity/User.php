@@ -28,7 +28,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type")
      */
     private $roles = [];
 
@@ -67,6 +67,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToMany(targetEntity=Guitar::class, mappedBy="user")
      */
     private $guitars;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $pseudo;
     
 
     public function __toString()
@@ -256,6 +261,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $guitar->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }
