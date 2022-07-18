@@ -98,12 +98,18 @@ class PostController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($post);
+            $post
+                ->setCreatedAt(new DateTimeImmutable())
+                ->setUpdatedAt(new DateTimeImmutable());
             $postRepository->add($post);
+            $entityManager->flush();
+            $this->addFlash('success', "Le post a été créée");
+
             return $this->redirectToRoute('back_office_post_browse', [], Response::HTTP_SEE_OTHER);
         }
 
-        $entityManager->flush();
-        $this->addFlash('success', "Le post a été créée");
+
 
         return $this->renderForm('back_office/post/add.html.twig', [
             'post' => $post,

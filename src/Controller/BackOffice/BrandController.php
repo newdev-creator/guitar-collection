@@ -98,12 +98,18 @@ class BrandController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($brand);
+            $brand
+                ->setCreatedAt(new DateTimeImmutable())
+                ->setUpdatedAt(new DateTimeImmutable());
             $brandRepository->add($brand);
+            $entityManager->flush();
+            $this->addFlash('success', "La marque a été créée");
+
             return $this->redirectToRoute('back_office_brand_browse', [], Response::HTTP_SEE_OTHER);
         }
 
-        $entityManager->flush();
-        $this->addFlash('success', "La marque a été créée");
+
 
         return $this->renderForm('back_office/brand/add.html.twig', [
             'brand' => $brand,

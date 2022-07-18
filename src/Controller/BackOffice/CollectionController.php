@@ -123,12 +123,18 @@ class CollectionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($guitar);
+            $guitar
+                ->setCreatedAt(new DateTimeImmutable())
+                ->setUpdatedAt(new DateTimeImmutable());
             $guitarRepository->add($guitar);
+            $entityManager->flush();
+            $this->addFlash('success', "La guitare a été créée");
+
             return $this->redirectToRoute('back_office_collection_browse', [], Response::HTTP_SEE_OTHER);
         }
 
-        $entityManager->flush();
-        $this->addFlash('success', "La guitare a été créée");
+
 
         return $this->renderForm('back_office/collection/add.html.twig', [
             'guitar' => $guitar,

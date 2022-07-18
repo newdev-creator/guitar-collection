@@ -1,0 +1,2 @@
+#!/bin/sh
+rsync -av ./ newdevt@ssh.cluster031.hosting.ovh.net:~/www/guitarcollection --include=public/build --include=public/.htaccess --include=vendor --exclude-from=.gitignore
