@@ -64,7 +64,7 @@ class SecurityController extends AbstractController
             $this->addFlash('success', "L'utilisateur à bien été ajouté");
 
             // $userRepository->add($user);
-            return $this->redirectToRoute('home_Page', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('security/loginInscription.html.twig', [
