@@ -13,10 +13,13 @@
     <link rel="stylesheet" href="{{ asset("css/homeStyle.css") }}">
     <link rel="stylesheet" href="{{ asset("css/collectionStyle.css") }}">
     <link rel="stylesheet" href="{{ asset("css/form.css") }}">
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
     <title>{% block title %}{% endblock %}Guitar Collection</title>
 </head>
 
-<body>
+<body {{ stimulus_controller('symfony/ux-swup/swup') }}>
 <header class="header">
     <nav>
         <div class="logo">
@@ -101,7 +104,9 @@
     </nav>
 
 </header>
-{% block body %}{% endblock %}
+<main id="swup">
+    {% block body %}{% endblock %}
+</main>
 <footer>
     <div class="container">
         <div class="row mb-2">
