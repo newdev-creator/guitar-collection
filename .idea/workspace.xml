@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="2fa2759d-c3bb-4aef-b85f-ec912affd7f7" name="Changes" comment="" />
+=======
+    <list default="true" id="2fa2759d-c3bb-4aef-b85f-ec912affd7f7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+    </list>
+>>>>>>> develop
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -154,6 +161,8 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
       <path value="$PROJECT_DIR$/vendor/symfonycasts/reset-password-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/ux-swup" />
     </include_path>
   </component>
   <component name="ProjectId" id="2AWXEOgbUdKkHHJNovNrqerjPk5" />
@@ -210,6 +219,10 @@
       <workItem from="1657890357230" duration="11000" />
       <workItem from="1657891660546" duration="7147000" />
       <workItem from="1658152755503" duration="281000" />
+      <workItem from="1658236083211" duration="1217000" />
+      <workItem from="1658507768789" duration="1397000" />
+      <workItem from="1658816850888" duration="636000" />
+      <workItem from="1658821810938" duration="134000" />
     </task>
     <servers />
   </component>
