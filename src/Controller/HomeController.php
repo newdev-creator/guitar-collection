@@ -26,4 +26,12 @@ class HomeController extends AbstractController
             'home_page' => $allPosts,
         ]);
     }
+
+    /**
+     * @Route("/A_Propos", name="_aboutPage")
+     */
+    public function aboutPage(): Response
+    {
+        return $this->render('home/aboutPage.html.twig');
+    }
 }
