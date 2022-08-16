@@ -3,18 +3,57 @@
 {% block title %}Hello ProfileController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% dump(guitars) %}
+    <!-- bootstrap user profile -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 px-5 py-5">
+                <div class="user-profile">
+                    <div class="d-flex">
+                        <div>
+                            <img src="{{ asset("images/" ~ profile_page.image) }}" alt="User profile" style="width:200px; height:200px; object-fit:cover">
+                        </div>
+                        <div style="width:100%;margin-left:20px">
+                            <table class="table table-bordered">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+                                <!-- add your own data -->
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/julien/Documents/Dev/guitar-collection/src/Controller/ProfileController.php'|file_link(0) }}">src/Controller/ProfileController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/julien/Documents/Dev/guitar-collection/templates/profile/index.html.twig'|file_link(0) }}">templates/profile/index.html.twig</a></code></li>
-    </ul>
-</div>
+                                <!--tr 1 -->
+                                <tr>
+                                    <td class="text-capitalize" style="background:#bfbbbb;color:#403a3a">Nom</td>
+                                    <td>{{ profile_page.firstName }}</td>
+                                </tr>
+
+                                <!--tr 2 -->
+                                <tr>
+                                    <td class="text-capitalize" style="background:#bfbbbb;color:#403a3a">Prènom</td>
+                                    <td>{{ profile_page.lastName }}</td>
+                                </tr>
+
+                                <!--tr 3 -->
+                                <tr>
+                                    <td class="text-capitalize" style="background:#bfbbbb;color:#403a3a">Pseudo</td>
+                                    <td>{{ profile_page.pseudo }}</td>
+                                </tr>
+
+                                <!--tr 4 -->
+                                <tr>
+                                    <td class="text-capitalize" style="background:#bfbbbb;color:#403a3a">email</td>
+                                    <td>{{ profile_page.email }}</td>
+                                </tr>
+
+                                <!--tr 5 -->
+                                <tr>
+                                    <td class="text-capitalize" style="background:#bfbbbb;color:#403a3a">Nombre d'instruments</td>
+                                    <td>{{ guitars }}</td>
+                                </tr>
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

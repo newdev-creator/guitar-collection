@@ -90,4 +90,15 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         ;
     }
     */
+    public function findGuitarNumber(User $user): array
+    {
+        return $this->createQueryBuilder('u')
+            ->select('g')
+            ->from('App\Entity\Guitar', 'g')
+            ->where('g.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
